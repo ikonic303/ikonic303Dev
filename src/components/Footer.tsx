@@ -8,12 +8,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="mb-4">
               <img src="/logo-ikonic.webp" alt="ikonic303" style={{ height: '48px', width: 'auto' }} />
-              <span className="text-offwhite font-display font-bold tracking-tight">
-                ikonic<span className="text-mint">303</span>
-                <span className="text-offwhite-dark font-mono text-[11px]">.dev</span>
-              </span>
             </div>
             <p className="text-offwhite-dark text-sm">
               Forward Deployed Engineering, AI automation, CRM, and digital marketing systems —
@@ -71,8 +67,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:info@ikonicmarketing303.com" className="text-offwhite-dark hover:text-mint transition-colors">
-                  info@ikonicmarketing303.com
+                <a href="mailto:solutions@ikonic303.dev" className="text-offwhite-dark hover:text-mint transition-colors">
+                  solutions@ikonic303.dev
                 </a>
               </li>
               <li className="text-offwhite-dark">Denver, CO · working with clients nationwide</li>

@@ -4,7 +4,7 @@
   "description": "Forward Deployed Engineering, AI automation, CRM, and digital marketing systems designed, built, integrated, and deployed for growing businesses.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0A0E1A",
+  "background_color": "#0B0D10",
   "theme_color": "#00FF9D",
   "icons": [
     { "src": "/favicon-16x16.png", "sizes": "16x16", "type": "image/png" },

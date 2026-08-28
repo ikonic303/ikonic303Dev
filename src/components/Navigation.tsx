@@ -45,17 +45,13 @@ export default function Navigation() {
       >
         <div className="px-[6vw] flex items-center justify-between">
           {/* Logo — Home */}
-          <Link to="/" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center group" aria-label="ikonic303 home">
             <img
               src="/logo-ikonic.webp"
               alt="ikonic303"
               style={{ height: '56px', width: 'auto' }}
               className="transition-all duration-300 group-hover:brightness-0 group-hover:invert-[.8] group-hover:sepia group-hover:saturate-[500%] group-hover:hue-rotate-[100deg]"
             />
-            <span className="hidden sm:block text-offwhite font-display font-bold tracking-tight text-lg">
-              ikonic<span className="text-mint">303</span>
-              <span className="text-offwhite-dark font-mono text-[11px] font-medium">.dev</span>
-            </span>
           </Link>
 
           {/* Desktop Navigation */}

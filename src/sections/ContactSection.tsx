@@ -145,7 +145,7 @@ export default function ContactSection() {
             {/* Contact Details */}
             <div className="space-y-4">
               <a 
-                href="mailto:info@ikonicmarketing303.com"
+                href="mailto:solutions@ikonic303.dev"
                 className="flex items-center gap-4 p-4 bg-charcoal-light border border-white/10 rounded-xl hover:border-mint/30 transition-colors"
               >
                 <div className="w-12 h-12 bg-mint/10 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -153,7 +153,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-offwhite-dark">Email</p>
-                  <p className="text-offwhite break-all">info@ikonicmarketing303.com</p>
+                  <p className="text-offwhite break-all">solutions@ikonic303.dev</p>
                 </div>
               </a>
               

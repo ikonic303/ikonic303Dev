@@ -39,7 +39,7 @@ const ORIGIN = 'https://ikonic303.dev';
 const PHONE = '(720) 679-1230';
 const CONTACT_BLOCK = `<h2>Get in touch</h2>
 <p>Call <a href="tel:+17206791230">${PHONE}</a> or email
-<a href="mailto:info@ikonicmarketing303.com">info@ikonicmarketing303.com</a> to book a strategy
+<a href="mailto:solutions@ikonic303.dev">solutions@ikonic303.dev</a> to book a strategy
 call or a free automation audit. ikonic303 is based in Denver, Colorado and works with clients
 nationwide. Looking for signage, window graphics, or architectural window film? That is our
 sister site, <a href="https://ikonic303.com">ikonic303.com</a>.</p>`;
@@ -229,7 +229,7 @@ function buildPage(template, route) {
     );
   }
   const fallback = `
-      <main style="max-width:820px;margin:0 auto;padding:2rem 1.25rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;color:#e8e8e8;background:#0A0E1A">
+      <main style="max-width:820px;margin:0 auto;padding:2rem 1.25rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;color:#e8e8e8;background:#0b0b0f">
         ${route.body}
         <p><a href="${ORIGIN}/">ikonic303 home</a> ·
            <a href="${ORIGIN}/services">services</a> ·
@@ -301,7 +301,7 @@ function buildPost(template, post) {
   };
 
   const body = `
-      <main style="max-width:820px;margin:0 auto;padding:2rem 1.25rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;color:#e8e8e8;background:#0A0E1A">
+      <main style="max-width:820px;margin:0 auto;padding:2rem 1.25rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;color:#e8e8e8;background:#0b0b0f">
         <article>
           <h1>${esc(post.title)}</h1>
           <p><em>${esc(post.category || 'Insights')}${post.publishedAt ? ' · ' + new Date(post.publishedAt).toDateString() : ''}</em></p>
@@ -421,7 +421,7 @@ function build404(template) {
     '<meta name="robots" content="noindex,follow" />');
   const rootRe = /(<div id="root">)[\s\S]*?(<\/div>\s*(?:<script|<\/body>))/;
   const body = `
-      <main style="max-width:820px;margin:0 auto;padding:2rem 1.25rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;color:#e8e8e8;background:#0A0E1A">
+      <main style="max-width:820px;margin:0 auto;padding:2rem 1.25rem;font-family:Inter,system-ui,sans-serif;line-height:1.6;color:#e8e8e8;background:#0b0b0f">
         <h1>Page not found</h1>
         <p>That page doesn't exist. The link may be out of date, or the address slightly off.</p>
         <p><a href="${ORIGIN}/">ikonic303 home</a> ·
