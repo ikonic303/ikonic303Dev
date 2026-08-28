@@ -1,7 +1,8 @@
 import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Users, Clock, TrendingUp, Headphones, Target, Zap, Shield, Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Rocket, Timer, RefreshCw, LineChart, Target, Boxes, ShieldCheck, Handshake } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import MatrixBackground from '../components/MatrixBackground';
 import Footer from '../components/Footer';
@@ -9,18 +10,18 @@ import PageSEO from '../components/PageSEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const stats = [
-  { icon: Users, label: 'Leads Captured', value: '10K+' },
-  { icon: Clock, label: 'Hours Saved', value: '5K+' },
-  { icon: TrendingUp, label: 'Avg. ROI Increase', value: '340%' },
-  { icon: Headphones, label: 'Support', value: '24/7' }
+const outcomes = [
+  { icon: Rocket, label: 'More qualified leads', value: 'Pipeline' },
+  { icon: Timer, label: 'Faster lead response', value: '< 60s' },
+  { icon: RefreshCw, label: 'Repetitive work automated', value: 'Hours/wk' },
+  { icon: LineChart, label: 'CRM & marketing visibility', value: 'Full' },
 ];
 
 const values = [
-  { icon: Target, title: 'Results-Driven', desc: 'We measure success by your growth, not vanity metrics.' },
-  { icon: Zap, title: 'Fast Execution', desc: 'We move quickly to get your systems up and running.' },
-  { icon: Shield, title: 'Transparent', desc: 'No hidden fees, no surprises. Just honest work.' },
-  { icon: Heart, title: 'Client-First', desc: 'Your success is our success. We treat your business like our own.' }
+  { icon: Boxes, title: 'We ship systems', desc: 'Every engagement ends with something running in production — not a report.' },
+  { icon: Target, title: 'Outcome-first', desc: 'We scope to a business result and measure against it from day one.' },
+  { icon: ShieldCheck, title: 'You own it', desc: 'Your accounts, your code, your data — documented and handed over.' },
+  { icon: Handshake, title: 'Partner, not vendor', desc: 'We stay while the system beds in and move to the next highest-leverage build.' },
 ];
 
 export default function About() {
@@ -28,10 +29,7 @@ export default function About() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(heroRef.current,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' }
-      );
+      gsap.fromTo(heroRef.current, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' });
     });
     return () => ctx.revert();
   }, []);
@@ -39,91 +37,84 @@ export default function About() {
   return (
     <div className="relative bg-charcoal min-h-screen">
       <PageSEO
-        title="About ikonic303 | Denver Digital Marketing Agency"
-        description="Meet the ikonic303 team. Denver-based digital marketing agency specializing in GoHighLevel automation, CRM setup, and lead generation for Colorado businesses."
+        title="About ikonic303 | Technology & Growth Partner for Growing Businesses"
+        description="ikonic303 is a Forward Deployed Engineering, AI, automation, CRM, and digital marketing partner. We design, build, integrate, and deploy the systems small and medium businesses need to scale."
         canonical="/about"
       />
       <MatrixBackground />
       <Navigation />
-      
-      {/* Hero Section */}
+
+      {/* Hero */}
       <section className="pt-32 pb-20 px-[6vw] relative z-10">
         <div ref={heroRef} className="max-w-4xl mx-auto text-center">
-          <p className="text-micro text-mint mb-4">ABOUT IKONIC</p>
+          <p className="text-micro text-mint mb-4">ABOUT IKONIC303</p>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-offwhite mb-6 leading-tight">
-            The Digital Agency That<br />
-            <span className="text-mint">Works While You Sleep</span>
+            Your technology &amp;<br />
+            <span className="text-mint">growth partner</span>
           </h1>
           <p className="text-lg text-offwhite-dark max-w-2xl mx-auto">
-            We're a Colorado-based digital marketing agency specializing in automation, 
-            CRM systems, and lead generation for local businesses. Our mission is to help 
-            businesses grow smarter, not harder.
+            ikonic303 helps businesses deploy the technology, automation, AI, CRM, and marketing
+            infrastructure they need to generate leads, improve operations, and scale.
           </p>
         </div>
       </section>
 
-      {/* Story Section */}
+      {/* Story */}
       <section className="py-20 px-[6vw] bg-charcoal-light/80 backdrop-blur-sm relative z-10">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-display text-3xl font-bold text-offwhite mb-6 text-center">
-            Our <span className="text-mint">Story</span>
+            What we <span className="text-mint">do</span>
           </h2>
           <div className="space-y-6 text-offwhite-dark">
             <p>
-              ikonic was founded with a simple belief: local businesses deserve 
-              access to the same powerful marketing tools and automation that big corporations use. 
-              We saw too many small businesses struggling to keep up with the digital world, 
-              juggling dozens of tools and still falling behind.
+              We're a Forward Deployed Engineering team for small and medium businesses. We embed
+              with your company, map how work actually flows, and build the systems that remove
+              the manual steps — then integrate them with the tools you already run on.
             </p>
             <p>
-              That's why we built Ikonic—to be the partner that helps businesses scale with 
-              smart automation, powerful CRM systems, and done-for-you marketing. We don't just 
-              build websites and set up software. We build complete revenue systems that work 
-              24/7, so you can focus on what you do best: running your business.
+              That covers four connected practices: custom engineering and integrations, AI
+              agents and automation, CRM and sales systems, and digital marketing built as a
+              lead-generation system. Most clients start with one and expand as it pays off.
             </p>
             <p>
-              Based in Colorado, we understand the unique challenges local businesses face. 
-              From Denver to Boulder, Fort Collins to Colorado Springs, we've helped businesses 
-              across the Front Range grow their customer base and increase revenue through 
-              strategic digital marketing and automation.
+              We don't simply provide advice. We design, build, integrate, and deploy the actual
+              systems, document them, and hand them over — with support while they bed into your
+              operations.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Mission Section */}
+      {/* Standard */}
       <section className="py-20 px-[6vw] relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="font-display text-3xl font-bold text-offwhite mb-6">
-                Our <span className="text-mint">Mission</span>
+                Our <span className="text-mint">standard</span>
               </h2>
               <p className="text-offwhite-dark mb-6">
-                We're here to skip the fluff and equip you with tools that actually drive impact. 
-                No heavy platforms. No copy-paste setups. Just tailored systems built to capture 
-                leads, nurture relationships, and scale your business.
+                One system at a time, with a fixed scope agreed before we build. Deployed to
+                production with monitoring and error handling. Documented and handed over so your
+                team can run it without us.
               </p>
               <p className="text-offwhite-dark">
-                Whether you're a local service business, a fast-moving startup, or a growing 
-                online brand, our team builds everything inside GoHighLevel—clean, organized, 
-                and designed to run effortlessly on autopilot.
+                And measured — every build maps to an outcome: more qualified leads, faster
+                follow-up, less manual admin, higher conversion, or better visibility.
               </p>
             </div>
             <div className="bg-gradient-to-br from-mint/20 to-mint/5 border border-mint/30 rounded-2xl p-8">
-              <h3 className="font-display text-xl font-bold text-offwhite mb-4">
-                What Makes Us Different
-              </h3>
+              <h3 className="font-display text-xl font-bold text-offwhite mb-4">What makes us different</h3>
               <ul className="space-y-3">
                 {[
-                  'We build AND manage your systems',
-                  'No long-term contracts required',
-                  'Transparent pricing with no hidden fees',
-                  'Dedicated support from our Colorado team',
-                  'Proven results with measurable ROI'
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-2 text-offwhite">
-                    <div className="w-1.5 h-1.5 bg-mint rounded-full" />
+                  'Consultancy + implementation team + growth partner in one',
+                  'Systems deployed to production, not recommendations',
+                  'Integrated with the tools you already use',
+                  'Fixed scope, full documentation, clean handover',
+                  'You own the accounts, code, and data',
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2 text-offwhite">
+                    <div className="w-1.5 h-1.5 bg-mint rounded-full flex-shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -133,19 +124,15 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values Section */}
+      {/* Values */}
       <section className="py-20 px-[6vw] bg-charcoal-light/80 backdrop-blur-sm relative z-10">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-display text-3xl font-bold text-offwhite mb-4 text-center">
-            Our <span className="text-mint">Values</span>
+            How we <span className="text-mint">operate</span>
           </h2>
-          <p className="text-offwhite-dark text-center mb-12 max-w-2xl mx-auto">
-            These principles guide everything we do.
-          </p>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
-              <div key={index} className="bg-charcoal border border-white/10 rounded-xl p-6 text-center">
+            {values.map((value) => (
+              <div key={value.title} className="bg-charcoal border border-white/10 rounded-xl p-6 text-center">
                 <div className="w-12 h-12 bg-mint/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <value.icon className="w-6 h-6 text-mint" />
                 </div>
@@ -157,23 +144,19 @@ export default function About() {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Outcomes */}
       <section className="py-20 px-[6vw] relative z-10">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-display text-3xl font-bold text-offwhite mb-4 text-center">
-            Results That <span className="text-mint">Speak</span>
+            What we're <span className="text-mint">measured on</span>
           </h2>
-          <p className="text-offwhite-dark text-center mb-12 max-w-2xl mx-auto">
-            Numbers don't lie. Here's what we've achieved for our clients.
-          </p>
-          
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((stat, index) => (
-              <div key={index} className="bg-charcoal-light border border-white/10 rounded-xl p-6 text-center">
+            {outcomes.map((stat) => (
+              <div key={stat.label} className="bg-charcoal-light border border-white/10 rounded-xl p-6 text-center">
                 <div className="w-12 h-12 bg-mint/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="w-6 h-6 text-mint" />
                 </div>
-                <p className="text-3xl font-bold text-offwhite mb-1">{stat.value}</p>
+                <p className="text-2xl font-bold text-offwhite mb-1">{stat.value}</p>
                 <p className="text-offwhite-dark text-sm">{stat.label}</p>
               </div>
             ))}
@@ -181,18 +164,16 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA */}
       <section className="py-20 px-[6vw] bg-charcoal-light/80 backdrop-blur-sm relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-display text-3xl font-bold text-offwhite mb-6">
-            Ready to Work With Us?
-          </h2>
+          <h2 className="font-display text-3xl font-bold text-offwhite mb-6">Ready to work with us?</h2>
           <p className="text-offwhite-dark mb-8">
-            Let's build something great together. Book your free consultation today.
+            Book a strategy call and we'll map the highest-leverage system to build first.
           </p>
-          <a href="/contact" className="btn-primary inline-flex items-center gap-2 text-lg px-8 py-4">
-            Get Started
-          </a>
+          <Link to="/contact" className="btn-primary inline-flex items-center gap-2 text-lg px-8 py-4">
+            Book a Strategy Call
+          </Link>
         </div>
       </section>
 

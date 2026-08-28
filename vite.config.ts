@@ -9,41 +9,24 @@ export default defineConfig({
   plugins: [
     react(),
     Sitemap({
-      hostname: 'https://ikonic303.com',
-      // Serve public/robots.txt verbatim (Josh's AI-crawler rules); don't let the
-      // plugin overwrite it with its minimal auto-generated robots.txt.
+      hostname: 'https://ikonic303.dev',
+      // Serve public/robots.txt verbatim; don't let the plugin overwrite it with its
+      // minimal auto-generated robots.txt.
       generateRobotsTxt: false,
+      // ikonic303.dev — the technology / growth-systems site. Physical signage and
+      // window-film routes live on ikonic303.com and are not part of this sitemap.
       dynamicRoutes: [
         '/',
+        '/services',
+        '/services/forward-deployed-engineering',
+        '/services/ai-automation',
+        '/services/crm-sales-systems',
+        '/services/digital-marketing',
+        '/how-we-work',
         '/about',
         '/contact',
-        '/services',
-        '/ai-website-generator',
-        '/services/web-design',
-        '/services/crm-automation',
-        '/services/reputation',
-        '/services/speed-to-lead',
-        '/services/marketing',
-        '/learn-more',
-        // AI wrap generator removed from live site per Josh — kept commented for re-enable
-        // '/commercial-wraps',
         '/careers',
         '/blogs',
-        '/print-ship',
-        '/lost-call-calculator',
-        '/branded-to-win',
-        '/sticker-builder',
-        '/services/window-tint',
-        '/storefront-graphics',
-        '/window-tint/home',
-        '/window-tint/office',
-        '/window-tint/storefront',
-        '/window-tint/security-film',
-        '/window-tint/decorative-privacy',
-        '/service-areas/wheat-ridge',
-        '/service-areas/arvada',
-        '/service-areas/lakewood',
-        '/service-areas/golden',
       ],
     }),
   ],

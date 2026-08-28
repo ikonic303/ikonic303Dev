@@ -10,7 +10,7 @@ interface BreadcrumbProps {
 }
 
 export default function Breadcrumb({ crumbs }: BreadcrumbProps) {
-  const BASE = 'https://ikonicmarketing303.com';
+  const BASE = 'https://ikonic303.dev';
 
   const schema = {
     '@context': 'https://schema.org',
@@ -31,7 +31,7 @@ export default function Breadcrumb({ crumbs }: BreadcrumbProps) {
         // break out of this block. Static data today, escaped anyway.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
       />
-      <nav aria-label="Breadcrumb" className="text-xs text-white/40 flex items-center gap-1.5 mb-6">
+      <nav aria-label="Breadcrumb" className="text-xs text-white/40 flex flex-wrap items-center gap-1.5 mb-6">
         {crumbs.map((c, i) => (
           <span key={c.href} className="flex items-center gap-1.5">
             {i > 0 && <span>/</span>}

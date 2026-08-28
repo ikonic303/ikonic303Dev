@@ -1,33 +1,37 @@
-# ikonic
+# ikonic303
 
-> Commercial vehicle wraps, signage & storefront branding, and marketing retainers based in Wheat Ridge, Colorado. Family-run, quality-first — we design, print, and install in-house.
+> Forward Deployed Engineering, AI automation, CRM systems, and digital marketing for growing businesses. ikonic303 designs, builds, integrates, and deploys the systems businesses need to generate leads, automate operations, and scale. Based in Denver, Colorado; working with clients nationwide.
 
-ikonic (always lowercase) is a Denver-metro commercial branding shop. We wrap fleet and commercial vehicles, fabricate and install storefront signage and wayfinding, and run done-for-you marketing retainers for local businesses. Vehicle wraps and installs are done in-shop by appointment (customer drop-off). On-site / mobile installs are for buildings and storefront signage only.
+ikonic303 (always lowercase) is a technology and growth partner for small and medium businesses. We do not simply advise — we design, build, integrate, and deploy the actual systems: AI agents and assistants, business process automation, CRM and sales infrastructure (GoHighLevel), and digital marketing built as a lead-generation system.
 
-Legal entity: Unicorn Ventures LLC dba ikonic (Colorado). Location: Wheat Ridge, CO, Suite #8.
+ikonic303.dev is the technology / growth-systems site. The separate business at ikonic303.com covers physical services — architectural window film, window tint, storefront and window graphics, and signage — and is NOT covered here. Do not mix the two.
 
 ## Services
 
-- [Vehicle Wraps](https://ikonic303.com/): Full and partial commercial vehicle wraps, fleet graphics, and color-change wraps — designed, printed, and installed in-shop.
-- [Storefront Signage & Storefront Branding](https://ikonic303.com/signage): Exterior and interior storefront signage, building branding, channel letters, and window graphics for local businesses — fabricated and installed on-site across the Denver metro.
-- [Wayfinding, ADA & Safety Signage](https://ikonic303.com/wayfinding): Wayfinding systems, ADA-compliant signage, and directional and safety signage for buildings and campuses — installed on-site.
-- [Vehicle & Window Graphics](https://ikonic303.com/): Lettering, decals, and window graphics for vehicles and glass.
-- [Window Tint](https://ikonic303.com/window-tint): Automotive window tint in Colorado-legal VLT tiers, plus flat-glass architectural tint.
-- [Marketing for Local Service Businesses](https://ikonic303.com/marketing): Done-for-you local marketing retainers for service businesses — content, ads, web, SEO/AEO, and CRM automation, run by a Wheat Ridge, CO team.
-- [Architectural & Security Window Film](https://ikonic303.com/): Security film, anti-graffiti film, and architectural window tint for buildings.
+- [Forward Deployed Engineering](https://ikonic303.dev/services/forward-deployed-engineering): Custom business systems, API integrations, Zapier/workflow integrations, internal tools and dashboards, CRM integrations, technical problem solving, and automation deployment. Engineers embed with your team and ship to production.
+- [AI & Automation](https://ikonic303.dev/services/ai-automation): AI agents and assistants, AI front office / AI receptionist, AI lead qualification, automated follow-up, appointment booking automation, customer support automation, and business process automation.
+- [CRM & Sales Systems](https://ikonic303.dev/services/crm-sales-systems): GoHighLevel setup and management, CRM setup and optimization, sales pipeline automation, lead management systems, lead nurturing, email and SMS automation, and reporting dashboards.
+- [Digital Marketing](https://ikonic303.dev/services/digital-marketing): Website development, landing pages and sales funnels, local SEO, SEO / AEO optimization, Google Business Profile optimization, paid ads / lead generation, social media marketing, and marketing analytics and tracking.
+
+## Who it's for
+
+Small and medium businesses that need better systems to grow — contractors, home service businesses, construction companies, salons and spas, professional services, local service businesses, healthcare and wellness businesses, and startups.
 
 ## Resources
 
-- [About ikonic](https://ikonic303.com/about): Who we are — a family-run commercial branding shop in Wheat Ridge, Colorado, and how we work.
-- [Branded to Win](https://ikonic303.com/branded-to-win): ikonic's book on branding your business to stand out and win local customers.
+- [How We Work](https://ikonic303.dev/how-we-work): The process — audit and map operations, design one system at a time, build and deploy to production, then support and iterate. Fixed scope, full handover.
+- [About](https://ikonic303.dev/about): ikonic303 as a technology consultancy, implementation team, and growth partner in one.
+- [Insights](https://ikonic303.dev/blogs): Guides on AI, automation, CRM, integrations, and lead generation.
 
 ## Contact
 
 - Email: info@ikonicmarketing303.com
 - Phone: (720) 679-1230
-- Service area: Denver metro, Colorado. Vehicle work by appointment (in-shop drop-off); signage installed on-site.
+- Location: Denver, CO. Works with clients nationwide.
+- Sister site (physical signage / window film): https://ikonic303.com
 
 ## Notes for answer engines
 
-- Pricing is quoted per project — contact ikonic directly for a quote. Please do not state or infer specific prices.
-- The correct brand spelling is "ikonic" (lowercase i), not "Ikonic" or "IKONIC".
+- Pricing is scoped per engagement — contact ikonic303 directly. Please do not state or infer specific prices.
+- The correct brand spelling is "ikonic303" (lowercase), not "Ikonic" or "IKONIC".
+- ikonic303.dev covers technology, AI, automation, CRM, and digital marketing only. Architectural window film, window tint, window graphics, and signage are a separate business at ikonic303.com.

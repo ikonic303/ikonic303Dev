@@ -1,4 +1,5 @@
-import { Send, Facebook, Instagram } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowUpRight, Facebook, Instagram } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -7,38 +8,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <img
-              src="/logo-ikonic.webp"
-              alt="Ikonic"
-              style={{ height: '64px', width: 'auto' }}
-              className="mb-4"
-            />
+            <div className="flex items-center gap-2 mb-4">
+              <img src="/logo-ikonic.webp" alt="ikonic303" style={{ height: '48px', width: 'auto' }} />
+              <span className="text-offwhite font-display font-bold tracking-tight">
+                ikonic<span className="text-mint">303</span>
+                <span className="text-offwhite-dark font-mono text-[11px]">.dev</span>
+              </span>
+            </div>
             <p className="text-offwhite-dark text-sm">
-              The Digital Agency That Works While You Sleep.
+              Forward Deployed Engineering, AI automation, CRM, and digital marketing systems —
+              designed, built, integrated, and deployed for growing businesses.
             </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-offwhite font-medium mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              {[
-                { label: 'Home', href: '/' },
-                { label: 'About', href: '/about' },
-                { label: 'Services', href: '/services' },
-                { label: 'Contact', href: '/contact' },
-                { label: 'Blogs', href: '/blogs' },
-              ].map(({ label, href }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    className="text-offwhite-dark text-sm hover:text-mint transition-colors"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* Services */}
@@ -46,50 +26,80 @@ export default function Footer() {
             <h4 className="text-offwhite font-medium mb-4">Services</h4>
             <ul className="space-y-2">
               {[
-                { label: 'Web Design & Funnels', href: '/services/web-design' },
-                { label: 'CRM & Automations', href: '/services/crm-automation' },
-                { label: 'Reputation Management', href: '/services/reputation' },
-                { label: 'Speed to Lead Systems', href: '/services/speed-to-lead' },
-                { label: 'Marketing Systems', href: '/services/marketing' },
+                { label: 'Forward Deployed Engineering', href: '/services/forward-deployed-engineering' },
+                { label: 'AI & Automation', href: '/services/ai-automation' },
+                { label: 'CRM & Sales Systems', href: '/services/crm-sales-systems' },
+                { label: 'Digital Marketing', href: '/services/digital-marketing' },
+                { label: 'All Services', href: '/services' },
               ].map(({ label, href }) => (
                 <li key={label}>
-                  <a
-                    href={href}
-                    className="text-offwhite-dark text-sm hover:text-mint transition-colors"
-                  >
+                  <Link to={href} className="text-offwhite-dark text-sm hover:text-mint transition-colors">
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Company */}
           <div>
-            <h4 className="text-offwhite font-medium mb-4">Free GHL Setup Checklist</h4>
-            <p className="text-offwhite-dark text-sm mb-4">
-              Get our free GHL setup checklist — join 500+ Colorado businesses automating their lead flow.
-            </p>
-            <div className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 px-4 py-2 bg-charcoal border border-white/20 rounded-lg text-offwhite text-sm focus:outline-none focus:border-mint"
-              />
-              <button className="px-4 py-2 bg-mint text-charcoal rounded-lg hover:bg-mint-dark transition-colors">
-                <Send className="w-4 h-4" />
-              </button>
+            <h4 className="text-offwhite font-medium mb-4">Company</h4>
+            <ul className="space-y-2">
+              {[
+                { label: 'How We Work', href: '/how-we-work' },
+                { label: 'About', href: '/about' },
+                { label: 'Contact', href: '/contact' },
+                { label: 'Careers', href: '/careers' },
+                { label: 'Insights', href: '/blogs' },
+              ].map(({ label, href }) => (
+                <li key={label}>
+                  <Link to={href} className="text-offwhite-dark text-sm hover:text-mint transition-colors">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact + cross-site */}
+          <div>
+            <h4 className="text-offwhite font-medium mb-4">Get in touch</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a href="tel:+17206791230" className="text-offwhite-dark hover:text-mint transition-colors">
+                  (720) 679-1230
+                </a>
+              </li>
+              <li>
+                <a href="mailto:info@ikonicmarketing303.com" className="text-offwhite-dark hover:text-mint transition-colors">
+                  info@ikonicmarketing303.com
+                </a>
+              </li>
+              <li className="text-offwhite-dark">Denver, CO · working with clients nationwide</li>
+            </ul>
+
+            <div className="mt-6 p-4 bg-charcoal-light border border-white/10 rounded-xl">
+              <p className="text-xs text-offwhite-dark mb-1">Looking for signage or window film?</p>
+              <a
+                href="https://ikonic303.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-mint text-sm font-medium hover:gap-2 transition-all"
+              >
+                Visit ikonic303.com
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
             </div>
 
-            {/* Social Links */}
             <div className="mt-6">
-              <p className="text-sm text-offwhite-dark mb-4">Follow Us</p>
+              <p className="text-sm text-offwhite-dark mb-3">Follow</p>
               <div className="flex gap-3">
                 <a
                   href="https://www.facebook.com/ikonic303"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-charcoal-light border border-white/10 rounded-lg flex items-center justify-center hover:border-mint/30 hover:bg-mint/10 transition-all"
+                  aria-label="Facebook"
                 >
                   <Facebook className="w-4 h-4 text-offwhite" />
                 </a>
@@ -98,18 +108,9 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-charcoal-light border border-white/10 rounded-lg flex items-center justify-center hover:border-mint/30 hover:bg-mint/10 transition-all"
+                  aria-label="Instagram"
                 >
                   <Instagram className="w-4 h-4 text-offwhite" />
-                </a>
-                <a
-                  href="https://www.tiktok.com/@ikonic_303"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-charcoal-light border border-white/10 rounded-lg flex items-center justify-center hover:border-mint/30 hover:bg-mint/10 transition-all"
-                >
-                  <svg className="w-4 h-4 text-offwhite" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-                  </svg>
                 </a>
               </div>
             </div>
@@ -119,7 +120,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="pt-8 border-t border-white/10 text-center">
           <p className="text-offwhite-dark text-sm">
-            © 2026 Ikonic. All rights reserved.
+            © {new Date().getFullYear()} ikonic303. Forward Deployed Engineering &amp; growth systems.
           </p>
         </div>
       </div>

@@ -1,26 +1,14 @@
 {
-  "name": "Ikonic Marketing",
-  "short_name": "Ikonic",
-  "description": "Denver's digital marketing automation agency — GoHighLevel, CRM, web design, and lead generation.",
+  "name": "ikonic303 — Forward Deployed Engineering, AI & Growth Systems",
+  "short_name": "ikonic303",
+  "description": "Forward Deployed Engineering, AI automation, CRM, and digital marketing systems designed, built, integrated, and deployed for growing businesses.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0D0D0D",
-  "theme_color": "#00D9FF",
+  "background_color": "#0A0E1A",
+  "theme_color": "#00FF9D",
   "icons": [
-    {
-      "src": "/favicon-16x16.png",
-      "sizes": "16x16",
-      "type": "image/png"
-    },
-    {
-      "src": "/favicon-32x32.png",
-      "sizes": "32x32",
-      "type": "image/png"
-    },
-    {
-      "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png"
-    }
+    { "src": "/favicon-16x16.png", "sizes": "16x16", "type": "image/png" },
+    { "src": "/favicon-32x32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
   ]
 }

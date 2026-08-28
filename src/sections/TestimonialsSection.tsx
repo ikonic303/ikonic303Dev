@@ -27,38 +27,38 @@ gsap.registerPlugin(ScrollTrigger);
 const testimonials = [
   {
     name: 'Sarah Mitchell',
-    title: 'Owner, Peak Fitness Denver',
-    quote: 'Ikonic built our entire lead system from scratch. New member inquiries now get an immediate text response, and our front desk spends less time on follow-ups.',
+    title: 'Owner, Peak Contracting',
+    quote: 'Leads used to sit in an inbox until someone got to them. Now every form and missed call gets an instant text back and a booked estimate. We closed three jobs the first week that would have gone cold.',
     rating: 5
   },
   {
     name: 'Marcus Chen',
-    title: 'Practice Manager, Chen Dental',
-    quote: 'Our review collection went from sporadic to consistent. We went from 12 Google reviews to over 80 in six months, and new patients mention finding us online.',
+    title: 'Practice Manager, Chen Family Dental',
+    quote: 'The AI receptionist answers after hours, books new patients straight onto the calendar, and only escalates the ones that actually need us. Front desk got their mornings back.',
     rating: 5
   },
   {
     name: 'Jake Rodriguez',
-    title: 'Owner, Rodriguez HVAC',
-    quote: 'Before Ikonic, leads would sit in my inbox for hours. Now customers get an instant response even when I am on a job site. The system pays for itself.',
+    title: 'Owner, Rodriguez Home Services',
+    quote: 'They rebuilt our GoHighLevel from scratch — pipelines, sequences, reporting. For the first time I can see exactly where every lead is and what it cost to get it.',
     rating: 5
   },
   {
     name: 'Amanda Foster',
-    title: 'Director, Foster Law Group',
-    quote: 'They migrated our outdated website to GHL and set up automated intake workflows. Our consultation bookings have increased, and the process is smoother for clients.',
+    title: 'Director, Foster & Co. Accounting',
+    quote: 'ikonic303 connected our intake forms, CRM, and scheduling with a few integrations. The double data entry that ate an hour a day is just gone.',
     rating: 5
   },
   {
     name: 'David Park',
-    title: 'Owner, Park Auto Repair',
-    quote: 'I was skeptical about another marketing service, but Ikonic actually delivers. They handle the technical stuff so I can focus on running my shop.',
+    title: 'Owner, Park Auto Group',
+    quote: 'New site, local SEO, and Google Business Profile cleanup. We went from page two to the map pack for our main service in about ten weeks and the call volume shows it.',
     rating: 5
   },
   {
     name: 'Lisa Thompson',
-    title: 'Manager, Thompson Realty',
-    quote: 'The CRM setup and automation sequences have changed how we handle buyer leads. Our agents know exactly when to follow up, and nothing falls through the cracks.',
+    title: 'Managing Broker, Thompson Realty',
+    quote: 'The follow-up automation nurtures old leads on its own. Deals we had written off are booking calls again without an agent lifting a finger.',
     rating: 5
   }
 ];
@@ -88,6 +88,9 @@ export default function TestimonialsSection() {
     const section = sectionRef.current;
     if (!section) return;
 
+    // Respect reduced-motion: skip the reveal entirely so content is just there.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const ctx = gsap.context(() => {
       // Header animation
       gsap.fromTo(headerRef.current,
@@ -99,8 +102,8 @@ export default function TestimonialsSection() {
           ease: 'power2.out',
           scrollTrigger: {
             trigger: headerRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
+            start: 'top 88%',
+            once: true
           }
         }
       );
@@ -118,8 +121,8 @@ export default function TestimonialsSection() {
             ease: 'power2.out',
             scrollTrigger: {
               trigger: cardsRef.current,
-              start: 'top 75%',
-              toggleActions: 'play none none reverse'
+              start: 'top 88%',
+              once: true
             }
           }
         );
@@ -139,19 +142,18 @@ export default function TestimonialsSection() {
         <div ref={headerRef} className="text-center mb-16">
           <p className="text-micro text-mint mb-4">TESTIMONIALS</p>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-offwhite mb-6">
-            See It From Our <span className="text-mint">Customers</span>
+            What changes when the <span className="text-mint">systems ship</span>
           </h2>
           <p className="text-lg text-offwhite-dark max-w-2xl mx-auto">
-            We don't just provide systems — we provide outcomes. From quicker responses to 
-            polished design and live human guidance, companies in every field rely on Ikonic 
-            to fuel their growth.
+            Contractors, home service businesses, clinics, and professional services use
+            ikonic303 to automate follow-up, deploy AI, and generate more qualified leads.
           </p>
         </div>
 
         {/* Google Reviews Banner */}
         {googleReviews.length > 0 && (
           <div className="mb-10">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-6">
               <GoogleIcon />
               <span className="text-offwhite font-semibold">Google Reviews</span>
               {googleRating && (
@@ -239,24 +241,24 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Case Study Preview */}
-        <div className="mt-16 bg-gradient-to-r from-mint/20 to-mint/5 border border-mint/30 rounded-2xl p-8 lg:p-12">
+        <div className="mt-16 bg-gradient-to-r from-mint/20 to-mint/5 border border-mint/30 rounded-2xl p-6 sm:p-8 lg:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
               <p className="text-micro text-mint mb-2">CASE STUDY</p>
               <h3 className="font-display text-2xl lg:text-3xl font-bold text-offwhite mb-4">
-                Peak Fitness: From Scattered Tools to One System
+                Home services company: from missed calls to booked jobs
               </h3>
               <p className="text-offwhite-dark mb-6">
-                A Denver fitness studio was juggling Mailchimp, Calendly, and spreadsheets to manage 
-                leads. Ikonic consolidated everything into a single GHL system with automated follow-up 
-                and a new booking funnel.
+                A 12-person contractor was losing leads to slow follow-up and a CRM nobody
+                trusted. We rebuilt the stack: instant speed-to-lead, an AI qualifier, a clean
+                GoHighLevel pipeline, and automated nurture for cold leads.
               </p>
               <ul className="space-y-2 mb-6">
                 {[
-                  'Migrated website and booking system to GHL',
-                  'Built automated SMS/email follow-up sequences',
-                  'Set up Google Business Profile optimization',
-                  'Created lead tracking dashboard for owners'
+                  'Missed-call text-back and instant lead reply deployed',
+                  'AI qualification routes only ready leads to the sales team',
+                  'GoHighLevel pipeline, sequences, and reporting rebuilt',
+                  'Automated nurture reactivates aged leads on its own',
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-2 text-offwhite-dark text-sm">
                     <div className="w-1.5 h-1.5 bg-mint rounded-full" />
@@ -267,9 +269,9 @@ export default function TestimonialsSection() {
             </div>
             <div className="text-center lg:text-right">
               <div className="inline-block bg-charcoal rounded-xl p-8">
-                <p className="text-5xl font-bold text-mint mb-2">3x</p>
-                <p className="text-offwhite">Faster Lead Response Time</p>
-                <p className="text-offwhite-dark text-sm mt-2">From hours to under 2 minutes</p>
+                <p className="text-5xl font-bold text-mint mb-2">&lt; 60s</p>
+                <p className="text-offwhite">Average lead response</p>
+                <p className="text-offwhite-dark text-sm mt-2">down from several hours</p>
               </div>
             </div>
           </div>

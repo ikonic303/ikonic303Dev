@@ -12,47 +12,34 @@ const AboutSection = lazy(() => import('./sections/AboutSection'));
 const TestimonialsSection = lazy(() => import('./sections/TestimonialsSection'));
 const ContactSection = lazy(() => import('./sections/ContactSection'));
 
-// All route pages — lazy loaded
+// Route pages — lazy loaded
+const AllServices = lazy(() => import('./pages/AllServices'));
+const ForwardDeployedEngineering = lazy(() => import('./pages/ForwardDeployedEngineering'));
+const AIAutomation = lazy(() => import('./pages/AIAutomation'));
+const CRMSalesSystems = lazy(() => import('./pages/CRMSalesSystems'));
+const DigitalMarketing = lazy(() => import('./pages/DigitalMarketing'));
+const HowWeWork = lazy(() => import('./pages/LearnMore'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
-const AllServices = lazy(() => import('./pages/AllServices'));
-const LearnMore = lazy(() => import('./pages/LearnMore'));
 const Careers = lazy(() => import('./pages/Careers'));
 const Blogs = lazy(() => import('./pages/Blogs'));
-const WebDesign = lazy(() => import('./pages/WebDesign'));
-const CRMAutomation = lazy(() => import('./pages/CRMAutomation'));
-const ReputationManagement = lazy(() => import('./pages/ReputationManagement'));
-const SpeedToLead = lazy(() => import('./pages/SpeedToLead'));
-const MarketingSystems = lazy(() => import('./pages/MarketingSystems'));
-const PrintAndShip = lazy(() => import('./pages/PrintAndShip'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
-const LostCallCalculator = lazy(() => import('./pages/LostCallCalculator'));
 const ProofManager = lazy(() => import('./pages/ProofManager'));
 const ProofClient = lazy(() => import('./pages/ProofClient'));
-const BrandedToWin = lazy(() => import('./pages/BrandedToWin'));
-const StickerBuilder = lazy(() => import('./pages/StickerBuilder'));
-// ViralBot routes REMOVED 2026-07-21 (security audit). It was a mockup that
-// (a) stored user passwords in PLAINTEXT in localStorage with a client-side-only
-// trial gate, and (b) was the sole caller of /api/generate-post — an unauthenticated,
-// unmetered Gemini endpoint anyone could drive as a free LLM proxy on our key.
-// Pages remain in src/pages/ if the product is ever revived; auth must be rebuilt on
-// Supabase Auth and the generation endpoint must be guarded before re-enabling.
-const AIWebsiteGenerator = lazy(() => import('./pages/AIWebsiteGenerator'));
-const Gallery = lazy(() => import('./pages/Gallery'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function HomePage() {
   return (
     <>
       <PageSEO
-        title="Digital Marketing Agency Denver CO | ikonic303"
-        description="Denver's #1 GoHighLevel agency. We build 24/7 lead capture systems — custom websites, CRM automation, sales funnels, and reputation management. Get more leads on autopilot."
+        title="Forward Deployed Engineering, AI Automation & Growth Systems | ikonic303"
+        description="ikonic303 designs, builds, integrates, and deploys the AI automation, CRM, and digital marketing systems growing businesses need to generate leads, speed up follow-up, and scale."
         canonical="/"
       />
       <Navigation />
       <main className="relative z-10">
         <HeroSection />
-        <Suspense fallback={null}>
+        <Suspense fallback={<div className="min-h-screen" aria-hidden="true" />}>
           <ServicesSection />
           <AboutSection />
           <TestimonialsSection />
@@ -65,9 +52,9 @@ function HomePage() {
 
 function App() {
   useEffect(() => {
-    // Meta Pixel — inject immediately so it fires on every page load
+    // Meta Pixel
     if (!(window as any).fbq) {
-      const fbq: any = function() {
+      const fbq: any = function () {
         fbq.callMethod ? fbq.callMethod.apply(fbq, arguments) : fbq.queue.push(arguments);
       };
       (window as any).fbq = fbq;
@@ -84,9 +71,8 @@ function App() {
       fbq('track', 'PageView');
     }
 
-    // Load all third-party widgets after 6s — well outside the TBT measurement window
+    // Load third-party widgets after 6s — outside the TBT measurement window
     const t = setTimeout(() => {
-      // GHL chat widget
       const scriptId = 'ghl-chat-widget-script';
       if (!document.getElementById(scriptId)) {
         const script = document.createElement('script');
@@ -96,33 +82,6 @@ function App() {
         script.setAttribute('data-widget-id', '69965105f3036706b875cf61');
         script.async = true;
         document.body.appendChild(script);
-      }
-
-      // GHL popup form — inject iframe + embed script only after delay
-      const popupId = 'popup-fz0LYqKFNeclNyuSnVZg';
-      if (!document.getElementById(popupId)) {
-        const iframe = document.createElement('iframe');
-        iframe.src = 'https://crm.ikonic303.com/widget/form/fz0LYqKFNeclNyuSnVZg';
-        iframe.style.cssText = 'display:none;width:100%;height:100%;border:none;border-radius:8px';
-        iframe.id = popupId;
-        iframe.setAttribute('data-layout', "{'id':'POPUP'}");
-        iframe.setAttribute('data-trigger-type', 'onScroll');
-        iframe.setAttribute('data-trigger-value', '50');
-        iframe.setAttribute('data-activation-type', 'alwaysActivated');
-        iframe.setAttribute('data-activation-value', '');
-        iframe.setAttribute('data-deactivation-type', 'neverDeactivate');
-        iframe.setAttribute('data-deactivation-value', '');
-        iframe.setAttribute('data-form-name', 'Free GHL Checklist');
-        iframe.setAttribute('data-height', '1182');
-        iframe.setAttribute('data-layout-iframe-id', popupId);
-        iframe.setAttribute('data-form-id', 'fz0LYqKFNeclNyuSnVZg');
-        iframe.title = 'Free GHL Checklist';
-        document.body.appendChild(iframe);
-
-        const embedScript = document.createElement('script');
-        embedScript.src = 'https://crm.ikonic303.com/js/form_embed.js';
-        embedScript.async = true;
-        document.body.appendChild(embedScript);
       }
     }, 6000);
 
@@ -136,27 +95,20 @@ function App() {
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/services" element={<AllServices />} />
+            <Route path="/services/forward-deployed-engineering" element={<ForwardDeployedEngineering />} />
+            <Route path="/services/ai-automation" element={<AIAutomation />} />
+            <Route path="/services/crm-sales-systems" element={<CRMSalesSystems />} />
+            <Route path="/services/digital-marketing" element={<DigitalMarketing />} />
+            <Route path="/how-we-work" element={<HowWeWork />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/services" element={<AllServices />} />
-            <Route path="/learn-more" element={<LearnMore />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/blogs" element={<Blogs />} />
-            <Route path="/services/web-design" element={<WebDesign />} />
-            <Route path="/services/crm-automation" element={<CRMAutomation />} />
-            <Route path="/services/reputation" element={<ReputationManagement />} />
-            <Route path="/services/speed-to-lead" element={<SpeedToLead />} />
-            <Route path="/services/marketing" element={<MarketingSystems />} />
-            <Route path="/print-ship" element={<PrintAndShip />} />
-            <Route path="/lost-call-calculator" element={<LostCallCalculator />} />
             <Route path="/post/:slug" element={<BlogPost />} />
             <Route path="/proof-manager" element={<ProofManager />} />
             <Route path="/proof/:token" element={<ProofClient />} />
-            <Route path="/branded-to-win" element={<BrandedToWin />} />
-            <Route path="/sticker-builder" element={<StickerBuilder />} />
-            <Route path="/ai-website-generator" element={<AIWebsiteGenerator />} />
-            <Route path="/gallery" element={<Gallery />} />
-            {/* Catch-all. Must stay LAST — react-router matches in order. */}
+            {/* Catch-all. Must stay LAST. */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

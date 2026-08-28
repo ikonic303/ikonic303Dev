@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Mail, Phone, MapPin, Facebook, Instagram, ArrowRight } from 'lucide-react';
@@ -10,6 +10,18 @@ import PageSEO from '../components/PageSEO';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
+  // GoHighLevel's embed script auto-resizes the form iframe to its content —
+  // without it the form clips on mobile where fields stack much taller.
+  useEffect(() => {
+    const id = 'ghl-form-embed-script';
+    if (document.getElementById(id)) return;
+    const s = document.createElement('script');
+    s.id = id;
+    s.src = 'https://crm.ikonic303.com/js/form_embed.js';
+    s.async = true;
+    document.body.appendChild(s);
+  }, []);
+
   const headerRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
@@ -35,8 +47,8 @@ export default function Contact() {
   return (
     <div className="relative bg-charcoal min-h-screen">
       <PageSEO
-        title="Contact ikonic303 | Free Strategy Call — Denver, CO"
-        description="Book your free marketing strategy session with ikonic303. Denver-based GoHighLevel experts ready to build your lead generation system. Call (720) 679-1230."
+        title="Contact ikonic303 | Book a Strategy Call or Free Automation Audit"
+        description="Book a strategy call or request a free automation audit. We'll map the highest-leverage AI, CRM, and marketing system to build for your business. Call (720) 679-1230."
         canonical="/contact"
       />
       <MatrixBackground />
@@ -47,11 +59,11 @@ export default function Contact() {
         <div ref={headerRef} className="max-w-4xl mx-auto text-center">
           <p className="text-micro text-mint mb-4">CONTACT US</p>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-offwhite mb-6">
-            Let's <span className="text-mint">Build</span> Your<br />System
+            Book a <span className="text-mint">strategy call</span>
           </h1>
           <p className="text-lg text-offwhite-dark max-w-2xl mx-auto">
-            Got a quick ask? Looking to collaborate or send us a referral? 
-            Share your message and we'll respond within one business day.
+            Tell us where the manual work and dropped leads are. We'll map the highest-leverage
+            automation and show you what we'd build first — usually within one business day.
           </p>
         </div>
       </section>
@@ -62,16 +74,22 @@ export default function Contact() {
           {/* Form */}
           <div
             ref={formRef}
-            className="bg-charcoal-light border border-white/10 rounded-2xl p-8 lg:p-10"
+            className="bg-charcoal-light border border-white/10 rounded-2xl p-4 sm:p-8 lg:p-10"
           >
             <h3 className="font-display text-2xl font-bold text-offwhite mb-6">
-              Get Started
+              Tell us about your business
             </h3>
 
             <iframe
               src="https://crm.ikonic303.com/widget/form/YoKGheZ0aVCEaSOJQFxY"
-              className="w-full h-[1199px] border-0 rounded-[3px] bg-charcoal-light"
-              title="Client Information"
+              id="inline-YoKGheZ0aVCEaSOJQFxY"
+              data-layout="{'id':'INLINE'}"
+              data-form-id="YoKGheZ0aVCEaSOJQFxY"
+              data-height="1199"
+              data-layout-iframe-id="inline-YoKGheZ0aVCEaSOJQFxY"
+              data-form-name="Book a strategy call"
+              className="w-full h-[1500px] sm:h-[1199px] border-0 rounded-[3px] bg-charcoal-light"
+              title="Book a strategy call"
               loading="lazy"
             />
           </div>
@@ -80,11 +98,11 @@ export default function Contact() {
           <div ref={infoRef} className="space-y-8">
             <div>
               <h3 className="font-display text-2xl font-bold text-offwhite mb-6">
-                Connect With Us
+                Talk to an engineer
               </h3>
               <p className="text-offwhite-dark mb-8">
-                Have a question? Curious how our solutions perform? Whether you're ready 
-                to begin or simply weighing options, our team is here for you.
+                Questions about a specific integration, an AI agent for your front office, or a
+                GoHighLevel rebuild? Call or email and we'll talk it through.
               </p>
             </div>
 
@@ -94,12 +112,12 @@ export default function Contact() {
                 href="mailto:info@ikonicmarketing303.com"
                 className="flex items-center gap-4 p-4 bg-charcoal-light border border-white/10 rounded-xl hover:border-mint/30 transition-colors"
               >
-                <div className="w-12 h-12 bg-mint/10 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-mint/10 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Mail className="w-5 h-5 text-mint" />
                 </div>
                 <div>
                   <p className="text-sm text-offwhite-dark">Email</p>
-                  <p className="text-offwhite">info@ikonicmarketing303.com</p>
+                  <p className="text-offwhite break-all">info@ikonicmarketing303.com</p>
                 </div>
               </a>
               
@@ -107,7 +125,7 @@ export default function Contact() {
                 href="tel:+17206791230"
                 className="flex items-center gap-4 p-4 bg-charcoal-light border border-white/10 rounded-xl hover:border-mint/30 transition-colors"
               >
-                <div className="w-12 h-12 bg-mint/10 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-mint/10 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Phone className="w-5 h-5 text-mint" />
                 </div>
                 <div>
@@ -117,12 +135,12 @@ export default function Contact() {
               </a>
               
               <div className="flex items-center gap-4 p-4 bg-charcoal-light border border-white/10 rounded-xl">
-                <div className="w-12 h-12 bg-mint/10 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-mint/10 rounded-lg flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-5 h-5 text-mint" />
                 </div>
                 <div>
-                  <p className="text-sm text-offwhite-dark">Location</p>
-                  <p className="text-offwhite">Colorado, USA</p>
+                  <p className="text-sm text-offwhite-dark">Based in</p>
+                  <p className="text-offwhite">Denver, CO — working with clients nationwide</p>
                 </div>
               </div>
             </div>
@@ -163,10 +181,10 @@ export default function Contact() {
             {/* CTA */}
             <div className="bg-gradient-to-r from-mint/20 to-mint/5 border border-mint/30 rounded-xl p-6">
               <p className="text-offwhite font-medium mb-2">
-                Ready to Automate Your Sales & Lead Flow?
+                Want a free automation audit?
               </p>
               <p className="text-offwhite-dark text-sm mb-4">
-                Book your free 15-minute GHL Audit. No commitment, just a clear plan to scale your business.
+                No commitment — we review your stack and show you the highest-leverage system to build first.
               </p>
               <a 
                 href="tel:+17206791230"

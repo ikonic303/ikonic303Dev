@@ -2,167 +2,64 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
-  "crons": [
-    {
-      "path": "/api/blog?action=auto-generate",
-      "schedule": "0 14 * * *"
-    }
-  ],
   "redirects": [
     {
       "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "(www\\.)?ikonicmarketing303\\.com"
-        }
-      ],
-      "destination": "https://ikonic303.com/:path*",
+      "has": [{ "type": "host", "value": "www.ikonic303.dev" }],
+      "destination": "https://ikonic303.dev/:path*",
       "permanent": true
     },
     {
-      "source": "/paint-protection-film",
-      "destination": "/",
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "(www\\.)?ikonicmarketing303\\.com" }],
+      "destination": "https://ikonic303.dev/:path*",
       "permanent": true
     },
-    {
-      "source": "/paint-protection-film.html",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/services/paint-protection-film",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/ceramic-coating",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/ceramic-coating.html",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/services/ceramic-coating",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/commercial-wraps",
-      "destination": "/signage",
-      "permanent": true
-    },
-    {
-      "source": "/commercial-wraps.html",
-      "destination": "/signage",
-      "permanent": true
-    },
-    {
-      "source": "/wrap-calculator",
-      "destination": "/",
-      "permanent": true
-    }
+
+    { "source": "/learn-more", "destination": "/how-we-work", "permanent": true },
+    { "source": "/gallery", "destination": "/services", "permanent": true },
+
+    { "source": "/services/web-design", "destination": "/services/digital-marketing", "permanent": true },
+    { "source": "/services/marketing", "destination": "/services/digital-marketing", "permanent": true },
+    { "source": "/marketing", "destination": "/services/digital-marketing", "permanent": true },
+    { "source": "/marketing.html", "destination": "/services/digital-marketing", "permanent": true },
+    { "source": "/services/crm-automation", "destination": "/services/crm-sales-systems", "permanent": true },
+    { "source": "/services/reputation", "destination": "/services/digital-marketing", "permanent": true },
+    { "source": "/services/speed-to-lead", "destination": "/services/ai-automation", "permanent": true },
+
+    { "source": "/print-ship", "destination": "/services", "permanent": true },
+    { "source": "/lost-call-calculator", "destination": "/services", "permanent": true },
+    { "source": "/sticker-builder", "destination": "/services", "permanent": true },
+    { "source": "/ai-website-generator", "destination": "/services/digital-marketing", "permanent": true },
+    { "source": "/branded-to-win", "destination": "/", "permanent": true },
+
+    { "source": "/window-tint", "destination": "https://ikonic303.com/window-tint", "permanent": true },
+    { "source": "/window-tint.html", "destination": "https://ikonic303.com/window-tint", "permanent": true },
+    { "source": "/window-tint/:path*", "destination": "https://ikonic303.com/window-tint/:path*", "permanent": true },
+    { "source": "/services/window-tint", "destination": "https://ikonic303.com/window-tint", "permanent": true },
+    { "source": "/storefront-graphics", "destination": "https://ikonic303.com/storefront-graphics", "permanent": true },
+    { "source": "/storefront-graphics.html", "destination": "https://ikonic303.com/storefront-graphics", "permanent": true },
+    { "source": "/signage", "destination": "https://ikonic303.com/signage", "permanent": true },
+    { "source": "/signage.html", "destination": "https://ikonic303.com/signage", "permanent": true },
+    { "source": "/wayfinding", "destination": "https://ikonic303.com/wayfinding", "permanent": true },
+    { "source": "/wayfinding.html", "destination": "https://ikonic303.com/wayfinding", "permanent": true },
+    { "source": "/service-areas/:path*", "destination": "https://ikonic303.com/service-areas/:path*", "permanent": true },
+    { "source": "/commercial-wraps", "destination": "https://ikonic303.com/", "permanent": true },
+    { "source": "/commercial-wraps.html", "destination": "https://ikonic303.com/", "permanent": true },
+    { "source": "/paint-protection-film", "destination": "https://ikonic303.com/", "permanent": true },
+    { "source": "/paint-protection-film.html", "destination": "https://ikonic303.com/", "permanent": true },
+    { "source": "/ceramic-coating", "destination": "https://ikonic303.com/", "permanent": true },
+    { "source": "/ceramic-coating.html", "destination": "https://ikonic303.com/", "permanent": true },
+    { "source": "/wrap-calculator", "destination": "https://ikonic303.com/", "permanent": true }
   ],
   "rewrites": [
-    {
-      "source": "/api/blog-posts",
-      "destination": "/api/blog?action=list"
-    },
-    {
-      "source": "/api/blog-post",
-      "destination": "/api/blog?action=post"
-    },
-    {
-      "source": "/api/publish-blog",
-      "destination": "/api/blog?action=publish"
-    },
-    {
-      "source": "/api/auto-blog-generate",
-      "destination": "/api/blog?action=auto-generate"
-    },
-    {
-      "source": "/signage",
-      "destination": "/signage.html"
-    },
-    {
-      "source": "/wayfinding",
-      "destination": "/wayfinding.html"
-    },
-    {
-      "source": "/marketing",
-      "destination": "/marketing.html"
-    },
-    {
-      "source": "/window-tint",
-      "destination": "/window-tint.html"
-    },
-    {
-      "source": "/services/window-tint",
-      "destination": "/window-tint.html"
-    },
-    {
-      "source": "/storefront-graphics",
-      "destination": "/storefront-graphics.html"
-    },
-    {
-      "source": "/window-tint/home",
-      "destination": "/window-tint/home.html"
-    },
-    {
-      "source": "/window-tint/office",
-      "destination": "/window-tint/office.html"
-    },
-    {
-      "source": "/window-tint/storefront",
-      "destination": "/window-tint/storefront.html"
-    },
-    {
-      "source": "/window-tint/security-film",
-      "destination": "/window-tint/security-film.html"
-    },
-    {
-      "source": "/window-tint/decorative-privacy",
-      "destination": "/window-tint/decorative-privacy.html"
-    },
-    {
-      "source": "/service-areas/wheat-ridge",
-      "destination": "/service-areas/wheat-ridge.html"
-    },
-    {
-      "source": "/service-areas/arvada",
-      "destination": "/service-areas/arvada.html"
-    },
-    {
-      "source": "/service-areas/lakewood",
-      "destination": "/service-areas/lakewood.html"
-    },
-    {
-      "source": "/service-areas/golden",
-      "destination": "/service-areas/golden.html"
-    },
-    {
-      "source": "/post/:slug",
-      "destination": "/404.html"
-    },
-    {
-      "source": "/proof-manager",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/proof/:token",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/viral-bot",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/viral-bot/:path*",
-      "destination": "/index.html"
-    },
+    { "source": "/api/blog-posts", "destination": "/api/blog?action=list" },
+    { "source": "/api/blog-post", "destination": "/api/blog?action=post" },
+    { "source": "/api/publish-blog", "destination": "/api/blog?action=publish" },
+    { "source": "/api/auto-blog-generate", "destination": "/api/blog?action=auto-generate" },
+    { "source": "/post/:slug", "destination": "/404.html" },
+    { "source": "/proof-manager", "destination": "/index.html" },
+    { "source": "/proof/:token", "destination": "/index.html" },
     {
       "source": "/((?!api/|@vite|@react-refresh|src/|node_modules/|.*\\.[a-zA-Z0-9]+$).*)",
       "destination": "/404.html"
@@ -172,22 +69,10 @@
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
-        },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()" },
         {
           "key": "Content-Security-Policy-Report-Only",
           "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://connect.facebook.net https://widgets.leadconnectorhq.com https://crm.ikonic303.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://www.facebook.com https://widgets.leadconnectorhq.com https://services.leadconnectorhq.com https://crm.ikonic303.com; frame-src https://crm.ikonic303.com https://widgets.leadconnectorhq.com https://www.facebook.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://crm.ikonic303.com; object-src 'none'; upgrade-insecure-requests"
@@ -197,18 +82,9 @@
     {
       "source": "/api/(.*)",
       "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "no-referrer"
-        }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "no-referrer" }
       ]
     }
   ]

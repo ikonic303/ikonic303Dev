@@ -4,11 +4,11 @@ import { Helmet } from 'react-helmet-async';
 // og:site_name and the title suffix. The check below is case-insensitive so a title already
 // naming the brand never gets a second one appended.
 const SITE_NAME = 'ikonic303';
-// The canonical host is the APEX ikonic303.com. ikonicmarketing303.com is the EMAIL domain and
-// also serves this site at HTTP 200, so pointing canonicals there told Google the preferred
-// copy of every page lived on the other hostname — splitting authority across two domains.
-// Keep this in sync with vercel.json's host redirect and index.html's canonical.
-const BASE_URL = 'https://ikonic303.com';
+// ikonic303.dev is the technology / growth-systems site (Forward Deployed Engineering, AI,
+// automation, CRM, marketing). The physical signage / window-film business lives on
+// ikonic303.com — keep the two domains' canonicals separate. Keep this in sync with
+// vercel.json's host redirect and index.html's canonical.
+const BASE_URL = 'https://ikonic303.dev';
 const DEFAULT_IMAGE = `${BASE_URL}/logo-ikonic.webp`;
 
 interface PageSEOProps {

@@ -43,13 +43,22 @@ module.exports = {
           dark: "#00D484",
           light: "#4DFFB8",
         },
+        // Dark-navy surface palette for ikonic303.dev. The key stays `charcoal`
+        // (used across the app as bg-charcoal / charcoal-light) but the values are
+        // now navy, not near-black.
         charcoal: {
-          DEFAULT: "#0B0D10",
-          light: "#141619",
+          DEFAULT: "#0A0E1A",
+          light: "#111A2E",
+          deep: "#070A12",
+        },
+        navy: {
+          DEFAULT: "#0A0E1A",
+          light: "#111A2E",
+          border: "#1E2A44",
         },
         offwhite: {
           DEFAULT: "#F6F7F9",
-          dark: "#A6A9B0",
+          dark: "#9AA3B2",
         },
         lightgray: "#F2F2F2",
       },

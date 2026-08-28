@@ -55,10 +55,7 @@ select:focus {
     padding-right: 5vw;
   }
 
-  /* Blog card grid: single column on mobile */
-  .grid-cols-3 {
-    grid-template-columns: 1fr !important;
-  }
+  /* Grid collapsing for mobile lives in index.css (single source of truth). */
 
   /* Ensure buttons don't overflow */
   .btn-primary, .btn-outline {

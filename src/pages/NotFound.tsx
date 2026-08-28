@@ -13,7 +13,7 @@ export default function NotFound() {
     <div className="relative bg-charcoal min-h-screen flex flex-col">
       <PageSEO
         title="Page Not Found"
-        description="That page doesn't exist. Find signage, wayfinding, and marketing for Denver businesses at ikonic303."
+        description="That page doesn't exist. Explore ikonic303's Forward Deployed Engineering, AI automation, CRM, and digital marketing services."
         noIndex
       />
       <Navigation />
@@ -31,19 +31,19 @@ export default function NotFound() {
           <div className="grid sm:grid-cols-2 gap-3 text-left mb-10">
             <Link to="/services" className="block bg-charcoal-light/80 border border-white/10 rounded-xl px-5 py-4 hover:border-mint transition-colors">
               <span className="block text-offwhite font-medium">Services</span>
-              <span className="block text-offwhite-dark text-sm">Signage, wayfinding &amp; marketing</span>
+              <span className="block text-offwhite-dark text-sm">Engineering, AI, CRM &amp; marketing</span>
             </Link>
-            <Link to="/print-ship" className="block bg-charcoal-light/80 border border-white/10 rounded-xl px-5 py-4 hover:border-mint transition-colors">
-              <span className="block text-offwhite font-medium">Print &amp; Ship</span>
-              <span className="block text-offwhite-dark text-sm">Custom-printed vinyl, shipped to you</span>
+            <Link to="/how-we-work" className="block bg-charcoal-light/80 border border-white/10 rounded-xl px-5 py-4 hover:border-mint transition-colors">
+              <span className="block text-offwhite font-medium">How We Work</span>
+              <span className="block text-offwhite-dark text-sm">Scoped, built, deployed, supported</span>
             </Link>
-            <Link to="/blogs" className="block bg-charcoal-light/80 border border-white/10 rounded-xl px-5 py-4 hover:border-mint transition-colors">
-              <span className="block text-offwhite font-medium">Guides</span>
-              <span className="block text-offwhite-dark text-sm">Marketing for local business</span>
+            <Link to="/about" className="block bg-charcoal-light/80 border border-white/10 rounded-xl px-5 py-4 hover:border-mint transition-colors">
+              <span className="block text-offwhite font-medium">About</span>
+              <span className="block text-offwhite-dark text-sm">Your technology &amp; growth partner</span>
             </Link>
             <Link to="/contact" className="block bg-charcoal-light/80 border border-white/10 rounded-xl px-5 py-4 hover:border-mint transition-colors">
               <span className="block text-offwhite font-medium">Contact</span>
-              <span className="block text-offwhite-dark text-sm">Talk to us about a project</span>
+              <span className="block text-offwhite-dark text-sm">Book a strategy call</span>
             </Link>
           </div>
 

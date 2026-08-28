@@ -1,7 +1,7 @@
 import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Globe, Settings, Star, Zap, TrendingUp, ArrowRight, Phone, Check, Sun } from 'lucide-react';
+import { Terminal, Bot, Database, LineChart, ArrowRight, Phone, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import MatrixBackground from '../components/MatrixBackground';
@@ -12,48 +12,65 @@ gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
-    icon: Globe,
-    title: 'Web Design & Funnels',
-    description: 'Custom websites and high-converting sales funnels built in GoHighLevel.',
-    features: ['Landing pages', 'Sales funnels', 'GHL integration', 'Mobile responsive'],
-    link: '/services/web-design'
+    icon: Terminal,
+    title: 'Forward Deployed Engineering',
+    description:
+      'We embed with your team and build the systems your business runs on — then deploy them to production.',
+    features: [
+      'Custom internal business systems',
+      'API integrations',
+      'Zapier / workflow integrations',
+      'Internal tools & dashboards',
+      'CRM integrations',
+      'Technical problem solving & implementation',
+    ],
+    link: '/services/forward-deployed-engineering',
   },
   {
-    icon: Settings,
-    title: 'CRM & Automations',
-    description: 'Complete GoHighLevel setup with automated workflows that nurture leads.',
-    features: ['CRM setup', 'Workflow automation', 'Lead tracking', 'AI integrations'],
-    link: '/services/crm-automation'
+    icon: Bot,
+    title: 'AI & Automation',
+    description:
+      'AI agents and assistants that handle conversations, qualify leads, and remove repetitive work.',
+    features: [
+      'AI agents / AI assistants',
+      'AI front office / AI receptionist',
+      'AI lead qualification',
+      'Automated follow-up & booking',
+      'Customer support automation',
+      'Business process automation',
+    ],
+    link: '/services/ai-automation',
   },
   {
-    icon: Star,
-    title: 'Reputation Management',
-    description: 'Build your 5-star reputation with Google Business optimization.',
-    features: ['Google Business Profile', 'Review automation', 'Local SEO', 'Reputation monitoring'],
-    link: '/services/reputation'
+    icon: Database,
+    title: 'CRM & Sales Systems',
+    description:
+      'GoHighLevel setup and optimization, pipelines, and sequences so no lead slips through.',
+    features: [
+      'GoHighLevel setup & management',
+      'CRM setup & optimization',
+      'Sales pipeline automation',
+      'Lead nurturing',
+      'Email & SMS automation',
+      'Reporting dashboards',
+    ],
+    link: '/services/crm-sales-systems',
   },
   {
-    icon: Zap,
-    title: 'Speed to Lead',
-    description: 'Respond to leads in under 60 seconds with automated follow-up.',
-    features: ['Instant SMS', 'Email sequences', 'Missed call text-back', 'Smart routing'],
-    link: '/services/speed-to-lead'
+    icon: LineChart,
+    title: 'Digital Marketing',
+    description:
+      'Websites, funnels, and local search built to generate qualified leads — and tracked end to end.',
+    features: [
+      'Website development',
+      'Landing pages & sales funnels',
+      'Local SEO / SEO / AEO',
+      'Google Business Profile optimization',
+      'Paid ads & lead generation',
+      'Marketing analytics & tracking',
+    ],
+    link: '/services/digital-marketing',
   },
-  {
-    icon: TrendingUp,
-    title: 'Marketing Systems',
-    description: 'Full-service digital marketing that keeps your pipeline full 24/7.',
-    features: ['Campaign management', 'Social media', 'Paid ads', 'Analytics dashboard'],
-    link: '/services/marketing'
-  },
-  {
-    icon: Sun,
-    title: 'Window Tint',
-    description: 'Ceramic and carbon tint that blocks UV, rejects heat, and cuts glare.',
-    features: ['99% UV blocking', 'Heat rejection', 'Colorado-legal', 'Lifetime warranty'],
-    link: '/services/window-tint',
-    external: true
-  }
 ];
 
 export default function AllServices() {
@@ -61,10 +78,7 @@ export default function AllServices() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(heroRef.current,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' }
-      );
+      gsap.fromTo(heroRef.current, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' });
     });
     return () => ctx.revert();
   }, []);
@@ -72,103 +86,83 @@ export default function AllServices() {
   return (
     <div className="relative bg-charcoal min-h-screen">
       <PageSEO
-        title="Digital Marketing Services Denver CO | ikonic303"
-        description="Full-service digital marketing for Denver businesses — web design, GoHighLevel CRM automation, reputation management, speed-to-lead, and marketing systems. All under one roof."
+        title="Services — Forward Deployed Engineering, AI, CRM & Marketing | ikonic303"
+        description="ikonic303 services: Forward Deployed Engineering, AI & automation, CRM & sales systems, and digital marketing. We design, build, integrate, and deploy the systems growing businesses need."
         canonical="/services"
       />
       <MatrixBackground />
       <Navigation />
-      
-      {/* Hero Section */}
+
+      {/* Hero */}
       <section className="pt-32 pb-20 px-[6vw] relative z-10">
         <div ref={heroRef} className="max-w-4xl mx-auto text-center">
           <p className="text-micro text-mint mb-4">OUR SERVICES</p>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-offwhite mb-6 leading-tight">
-            Everything You Need to<br />
-            <span className="text-mint">Grow Your Business</span>
+            The systems we<br />
+            <span className="text-mint">build and deploy</span>
           </h1>
           <p className="text-lg text-offwhite-dark max-w-2xl mx-auto mb-8">
-            From websites and CRM to automation and marketing, we provide complete 
-            digital solutions for Colorado businesses. All integrated, all optimized, 
-            all working together.
+            Four connected practices — engineering, AI, CRM, and marketing — delivered as working
+            systems inside your business, not recommendations.
           </p>
-          <a href="/contact" className="btn-primary inline-flex items-center gap-2">
+          <Link to="/contact" className="btn-primary inline-flex items-center gap-2">
             <Phone className="w-5 h-5" />
-            Get Free Consultation
-          </a>
+            Book a Strategy Call
+          </Link>
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Services grid */}
       <section className="py-20 px-[6vw] bg-charcoal-light/80 backdrop-blur-sm relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => (
-              <div 
-                key={index}
-                className="bg-charcoal border border-white/10 rounded-xl p-8 hover:border-mint/50 transition-all duration-300 hover:-translate-y-1"
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {services.map((service) => (
+              <div
+                key={service.title}
+                className="bg-charcoal border border-white/10 rounded-xl p-6 sm:p-8 hover:border-mint/50 transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="w-14 h-14 bg-mint/10 rounded-lg flex items-center justify-center mb-6">
                   <service.icon className="w-7 h-7 text-mint" />
                 </div>
-                
-                <h3 className="font-display text-xl font-bold text-offwhite mb-3">
-                  {service.title}
-                </h3>
-                
-                <p className="text-offwhite-dark text-sm mb-6">
-                  {service.description}
-                </p>
-                
-                <ul className="space-y-2 mb-6">
-                  {service.features.map((feature, fIndex) => (
-                    <li key={fIndex} className="flex items-center gap-2 text-sm text-offwhite-dark">
-                      <Check className="w-4 h-4 text-mint" />
+                <h2 className="font-display text-xl font-bold text-offwhite mb-3">{service.title}</h2>
+                <p className="text-offwhite-dark text-sm mb-6">{service.description}</p>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2 text-sm text-offwhite-dark">
+                      <Check className="w-4 h-4 text-mint flex-shrink-0 mt-0.5" />
                       {feature}
                     </li>
                   ))}
                 </ul>
-                
-                {service.external ? (
-                  <a
-                    href={service.link}
-                    className="inline-flex items-center gap-2 text-mint text-sm font-medium hover:gap-3 transition-all"
-                  >
-                    Learn More
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                ) : (
-                  <Link
-                    to={service.link}
-                    className="inline-flex items-center gap-2 text-mint text-sm font-medium hover:gap-3 transition-all"
-                  >
-                    Learn More
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                )}
+                <Link
+                  to={service.link}
+                  className="inline-flex items-center gap-2 text-mint text-sm font-medium hover:gap-3 transition-all"
+                >
+                  Explore this service
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Why us */}
       <section className="py-20 px-[6vw] relative z-10">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-display text-3xl font-bold text-offwhite mb-4 text-center">
-            Why Choose <span className="text-mint">Ikonic</span>?
+            Why work with <span className="text-mint">ikonic303</span>
           </h2>
           <p className="text-offwhite-dark text-center mb-12 max-w-2xl mx-auto">
-            We're not just another agency. We're your growth partner.
+            A technology consultancy, implementation team, and growth partner in one.
           </p>
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { title: 'All-in-One Platform', desc: 'Everything integrated in GoHighLevel—no juggling multiple tools.' },
-              { title: 'Done-for-You Service', desc: 'We build AND manage your systems so you can focus on your business.' },
-              { title: 'Proven Results', desc: 'Data-driven strategies with measurable ROI for every campaign.' }
-            ].map((item, index) => (
-              <div key={index} className="bg-charcoal-light border border-white/10 rounded-xl p-6 text-center">
+              { title: 'We deploy, not just advise', desc: 'Every engagement ends with a system running in production and documented — not a report.' },
+              { title: 'Integrated with your stack', desc: 'We connect the tools you already use so there is one source of truth, not five disconnected apps.' },
+              { title: 'Measured on outcomes', desc: 'More qualified leads, faster response, less manual work, higher conversion — tracked from day one.' },
+            ].map((item) => (
+              <div key={item.title} className="bg-charcoal-light border border-white/10 rounded-xl p-6 text-center">
                 <h3 className="font-display text-lg font-bold text-offwhite mb-3">{item.title}</h3>
                 <p className="text-offwhite-dark text-sm">{item.desc}</p>
               </div>
@@ -180,13 +174,11 @@ export default function AllServices() {
       {/* CTA */}
       <section className="py-20 px-[6vw] bg-charcoal-light/80 backdrop-blur-sm relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-display text-3xl font-bold text-offwhite mb-6">
-            Ready to Get Started?
-          </h2>
+          <h2 className="font-display text-3xl font-bold text-offwhite mb-6">See how we can automate your business</h2>
           <p className="text-offwhite-dark mb-8">
-            Book your free consultation and let's discuss which services are right for your business.
+            Book a call or request a free automation audit — we'll map the highest-leverage system to build first.
           </p>
-          <a href="/contact" className="btn-primary inline-flex items-center gap-2 text-lg px-8 py-4">
+          <a href="tel:+17206791230" className="btn-primary inline-flex items-center gap-2 text-lg px-8 py-4">
             <Phone className="w-5 h-5" />
             Call (720) 679-1230
           </a>
