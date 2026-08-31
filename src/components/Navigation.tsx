@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
-// The four service categories for ikonic303.dev. Every page here is a normal SPA
-// route (React Router), so these are <Link>s, not full page loads.
+// The four things ikonic303 builds. Every page here is a normal SPA route
+// (React Router), so these are <Link>s, not full page loads.
 const serviceLinks = [
-  { label: 'Forward Deployed Engineering', href: '/services/forward-deployed-engineering' },
-  { label: 'AI & Automation', href: '/services/ai-automation' },
-  { label: 'CRM & Sales Systems', href: '/services/crm-sales-systems' },
-  { label: 'Digital Marketing', href: '/services/digital-marketing' },
+  { label: 'AI agents & automation', href: '/services/ai-agents-and-automation' },
+  { label: 'CRM & sales systems', href: '/services/crm-and-sales-systems' },
+  { label: 'Internal tools & dashboards', href: '/services/internal-tools-and-dashboards' },
+  { label: 'Marketing systems', href: '/services/marketing-systems' },
 ];
 
 export default function Navigation() {
@@ -55,8 +55,8 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6">
-            <Link to="/" className="text-sm font-medium text-offwhite-dark hover:text-mint transition-colors">
+          <div className="hidden lg:flex items-center gap-4 xl:gap-6">
+            <Link to="/" className="text-sm font-medium text-offwhite-dark hover:text-mint transition-colors whitespace-nowrap">
               Home
             </Link>
 
@@ -77,10 +77,16 @@ export default function Navigation() {
                   className="absolute top-full left-0 mt-2 w-72 bg-charcoal border border-white/10 rounded-lg shadow-xl overflow-hidden"
                 >
                   <Link
+                    to="/forward-deployed-engineering"
+                    className="block px-4 py-3 text-sm font-semibold text-mint hover:bg-mint/10 transition-colors border-b border-white/10"
+                  >
+                    What is a forward deployed engineer? →
+                  </Link>
+                  <Link
                     to="/services"
                     className="block px-4 py-3 text-sm font-semibold text-mint hover:bg-mint/10 transition-colors border-b border-white/10"
                   >
-                    All Services →
+                    What we build →
                   </Link>
                   {serviceLinks.map((link) => (
                     <Link
@@ -95,20 +101,24 @@ export default function Navigation() {
               )}
             </div>
 
-            <Link to="/how-we-work" className="text-sm font-medium text-offwhite-dark hover:text-mint transition-colors">
+            <Link to="/how-we-work" className="text-sm font-medium text-offwhite-dark hover:text-mint transition-colors whitespace-nowrap">
               How We Work
+            </Link>
+
+            <Link to="/what-it-costs" className="text-sm font-medium text-offwhite-dark hover:text-mint transition-colors whitespace-nowrap">
+              What It Costs
+            </Link>
+
+            <Link to="/who-we-work-with" className="text-sm font-medium text-offwhite-dark hover:text-mint transition-colors whitespace-nowrap">
+              Who We Work With
             </Link>
 
             <Link to="/about" className="text-sm font-medium text-offwhite-dark hover:text-mint transition-colors">
               About
             </Link>
 
-            <Link to="/contact" className="text-sm font-medium text-offwhite-dark hover:text-mint transition-colors">
-              Contact
-            </Link>
-
-            <Link to="/contact" className="btn-primary text-sm">
-              Book a Strategy Call
+            <Link to="/contact" className="btn-primary text-sm whitespace-nowrap">
+              Start with the measurement
             </Link>
           </div>
 
@@ -129,42 +139,56 @@ export default function Navigation() {
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="min-h-full flex flex-col items-center justify-center gap-5 px-6 pt-24 pb-12">
-          <Link to="/" className="text-2xl font-display font-bold text-offwhite hover:text-mint transition-colors">
-            Home
-          </Link>
-
-          <div className="text-center">
-            <p className="text-mint text-sm mb-2">Services</p>
-            <Link
-              to="/services"
-              className="block text-xl font-display font-bold text-mint hover:text-mint-light transition-colors py-1.5"
-            >
-              All Services →
+        {/* min-h-full + m-auto on the inner block: vertically centered when it fits,
+            scrolls from the top (no clipped items) when it doesn't. */}
+        <div className="min-h-full flex flex-col px-6 py-24">
+          <div className="m-auto w-full flex flex-col items-center gap-4 text-center">
+            <Link to="/" className="text-xl font-display font-bold text-offwhite hover:text-mint transition-colors">
+              Home
             </Link>
-            {serviceLinks.map((link) => (
-              <Link
-                key={link.label}
-                to={link.href}
-                className="block text-base font-display font-semibold text-offwhite-dark hover:text-mint transition-colors py-1.5"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
 
-          <Link to="/how-we-work" className="text-2xl font-display font-bold text-offwhite hover:text-mint transition-colors">
-            How We Work
-          </Link>
-          <Link to="/about" className="text-2xl font-display font-bold text-offwhite hover:text-mint transition-colors">
-            About
-          </Link>
-          <Link to="/contact" className="text-2xl font-display font-bold text-offwhite hover:text-mint transition-colors">
-            Contact
-          </Link>
-          <Link to="/contact" className="btn-primary mt-2">
-            Book a Strategy Call
-          </Link>
+            <Link
+              to="/forward-deployed-engineering"
+              className="text-xl font-display font-bold text-offwhite hover:text-mint transition-colors"
+            >
+              Forward Deployed Engineering
+            </Link>
+
+            <div>
+              <p className="text-mint text-xs uppercase tracking-wide mb-1">What we build</p>
+              <Link
+                to="/services"
+                className="block text-lg font-display font-bold text-mint hover:text-mint-light transition-colors py-1"
+              >
+                All Services →
+              </Link>
+              {serviceLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="block text-sm font-display font-semibold text-offwhite-dark hover:text-mint transition-colors py-1"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+
+            <Link to="/how-we-work" className="text-xl font-display font-bold text-offwhite hover:text-mint transition-colors">
+              How We Work
+            </Link>
+            <Link to="/what-it-costs" className="text-xl font-display font-bold text-offwhite hover:text-mint transition-colors">
+              What It Costs
+            </Link>
+            <Link to="/who-we-work-with" className="text-xl font-display font-bold text-offwhite hover:text-mint transition-colors">
+              Who We Work With
+            </Link>
+            <Link to="/about" className="text-xl font-display font-bold text-offwhite hover:text-mint transition-colors">
+              About
+            </Link>
+            <Link to="/contact" className="btn-primary mt-2">
+              Start with the measurement
+            </Link>
+          </div>
         </div>
       </div>
     </>

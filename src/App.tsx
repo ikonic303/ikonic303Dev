@@ -1,24 +1,23 @@
 import { useEffect, lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import PageSEO from './components/PageSEO';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import MatrixBackground from './components/MatrixBackground';
-import Navigation from './components/Navigation';
-import HeroSection from './sections/HeroSection';
+import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
-// Below-fold home sections — lazy loaded
-const ServicesSection = lazy(() => import('./sections/ServicesSection'));
-const AboutSection = lazy(() => import('./sections/AboutSection'));
-const TestimonialsSection = lazy(() => import('./sections/TestimonialsSection'));
-const ContactSection = lazy(() => import('./sections/ContactSection'));
-
 // Route pages — lazy loaded
+const Home = lazy(() => import('./pages/Home'));
 const AllServices = lazy(() => import('./pages/AllServices'));
 const ForwardDeployedEngineering = lazy(() => import('./pages/ForwardDeployedEngineering'));
-const AIAutomation = lazy(() => import('./pages/AIAutomation'));
-const CRMSalesSystems = lazy(() => import('./pages/CRMSalesSystems'));
-const DigitalMarketing = lazy(() => import('./pages/DigitalMarketing'));
+const FdeVsConsultant = lazy(() => import('./pages/FdeVsConsultant'));
+const FdeVsHiring = lazy(() => import('./pages/FdeVsHiring'));
+const FractionalFde = lazy(() => import('./pages/FractionalFde'));
 const HowWeWork = lazy(() => import('./pages/LearnMore'));
+const WhatItCosts = lazy(() => import('./pages/WhatItCosts'));
+const WhoWeWorkWith = lazy(() => import('./pages/WhoWeWorkWith'));
+const AiAgentsAndAutomation = lazy(() => import('./pages/AiAgentsAndAutomation'));
+const CrmAndSalesSystems = lazy(() => import('./pages/CrmAndSalesSystems'));
+const InternalToolsAndDashboards = lazy(() => import('./pages/InternalToolsAndDashboards'));
+const MarketingSystems = lazy(() => import('./pages/MarketingSystems'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Careers = lazy(() => import('./pages/Careers'));
@@ -27,28 +26,6 @@ const BlogPost = lazy(() => import('./pages/BlogPost'));
 const ProofManager = lazy(() => import('./pages/ProofManager'));
 const ProofClient = lazy(() => import('./pages/ProofClient'));
 const NotFound = lazy(() => import('./pages/NotFound'));
-
-function HomePage() {
-  return (
-    <>
-      <PageSEO
-        title="Forward Deployed Engineering, AI Automation & Growth Systems | ikonic303"
-        description="ikonic303 designs, builds, integrates, and deploys the AI automation, CRM, and digital marketing systems growing businesses need to generate leads, speed up follow-up, and scale."
-        canonical="/"
-      />
-      <Navigation />
-      <main className="relative z-10">
-        <HeroSection />
-        <Suspense fallback={<div className="min-h-screen" aria-hidden="true" />}>
-          <ServicesSection />
-          <AboutSection />
-          <TestimonialsSection />
-          <ContactSection />
-        </Suspense>
-      </main>
-    </>
-  );
-}
 
 function App() {
   useEffect(() => {
@@ -90,24 +67,59 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="relative bg-charcoal min-h-screen">
         <MatrixBackground />
         <Suspense fallback={null}>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/services" element={<AllServices />} />
-            <Route path="/services/forward-deployed-engineering" element={<ForwardDeployedEngineering />} />
-            <Route path="/services/ai-automation" element={<AIAutomation />} />
-            <Route path="/services/crm-sales-systems" element={<CRMSalesSystems />} />
-            <Route path="/services/digital-marketing" element={<DigitalMarketing />} />
+            <Route path="/" element={<Home />} />
+
+            {/* Pillar + comparisons */}
+            <Route path="/forward-deployed-engineering" element={<ForwardDeployedEngineering />} />
+            <Route path="/forward-deployed-engineer-vs-consultant" element={<FdeVsConsultant />} />
+            <Route path="/forward-deployed-engineer-vs-hiring" element={<FdeVsHiring />} />
+            <Route path="/fractional-forward-deployed-engineer" element={<FractionalFde />} />
+
+            {/* Core */}
             <Route path="/how-we-work" element={<HowWeWork />} />
+            <Route path="/what-it-costs" element={<WhatItCosts />} />
+            <Route path="/who-we-work-with" element={<WhoWeWorkWith />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+
+            {/* Services */}
+            <Route path="/services" element={<AllServices />} />
+            <Route path="/services/ai-agents-and-automation" element={<AiAgentsAndAutomation />} />
+            <Route path="/services/crm-and-sales-systems" element={<CrmAndSalesSystems />} />
+            <Route path="/services/internal-tools-and-dashboards" element={<InternalToolsAndDashboards />} />
+            <Route path="/services/marketing-systems" element={<MarketingSystems />} />
+
+            {/* Moved / renamed — client-side mirror of the vercel.json 301s */}
+            <Route
+              path="/services/forward-deployed-engineering"
+              element={<Navigate to="/forward-deployed-engineering" replace />}
+            />
+            <Route
+              path="/services/ai-automation"
+              element={<Navigate to="/services/ai-agents-and-automation" replace />}
+            />
+            <Route
+              path="/services/crm-sales-systems"
+              element={<Navigate to="/services/crm-and-sales-systems" replace />}
+            />
+            <Route
+              path="/services/digital-marketing"
+              element={<Navigate to="/services/marketing-systems" replace />}
+            />
+            <Route path="/learn-more" element={<Navigate to="/how-we-work" replace />} />
+
+            {/* Unchanged */}
             <Route path="/careers" element={<Careers />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/post/:slug" element={<BlogPost />} />
             <Route path="/proof-manager" element={<ProofManager />} />
             <Route path="/proof/:token" element={<ProofClient />} />
+
             {/* Catch-all. Must stay LAST. */}
             <Route path="*" element={<NotFound />} />
           </Routes>

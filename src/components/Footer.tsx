@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Facebook, Instagram } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -12,21 +12,21 @@ export default function Footer() {
               <img src="/logo-ikonic.webp" alt="ikonic303" style={{ height: '48px', width: 'auto' }} />
             </div>
             <p className="text-offwhite-dark text-sm">
-              Forward Deployed Engineering, AI automation, CRM, and digital marketing systems —
-              designed, built, integrated, and deployed for growing businesses.
+              Forward deployed engineering for operating companies of 50 to 500 people. We measure
+              what one workflow costs you, build the software into your stack, and stay to run it.
             </p>
           </div>
 
-          {/* Services */}
+          {/* What we build */}
           <div>
-            <h4 className="text-offwhite font-medium mb-4">Services</h4>
+            <h4 className="text-offwhite font-medium mb-4">What we build</h4>
             <ul className="space-y-2">
               {[
-                { label: 'Forward Deployed Engineering', href: '/services/forward-deployed-engineering' },
-                { label: 'AI & Automation', href: '/services/ai-automation' },
-                { label: 'CRM & Sales Systems', href: '/services/crm-sales-systems' },
-                { label: 'Digital Marketing', href: '/services/digital-marketing' },
-                { label: 'All Services', href: '/services' },
+                { label: 'AI agents & automation', href: '/services/ai-agents-and-automation' },
+                { label: 'CRM & sales systems', href: '/services/crm-and-sales-systems' },
+                { label: 'Internal tools & dashboards', href: '/services/internal-tools-and-dashboards' },
+                { label: 'Marketing systems', href: '/services/marketing-systems' },
+                { label: 'All services', href: '/services' },
               ].map(({ label, href }) => (
                 <li key={label}>
                   <Link to={href} className="text-offwhite-dark text-sm hover:text-mint transition-colors">
@@ -39,14 +39,14 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-offwhite font-medium mb-4">Company</h4>
+            <h4 className="text-offwhite font-medium mb-4">The engagement</h4>
             <ul className="space-y-2">
               {[
-                { label: 'How We Work', href: '/how-we-work' },
+                { label: 'What is a forward deployed engineer?', href: '/forward-deployed-engineering' },
+                { label: 'How an engagement runs', href: '/how-we-work' },
+                { label: 'What it costs', href: '/what-it-costs' },
+                { label: 'Who we work with', href: '/who-we-work-with' },
                 { label: 'About', href: '/about' },
-                { label: 'Contact', href: '/contact' },
-                { label: 'Careers', href: '/careers' },
-                { label: 'Insights', href: '/blogs' },
               ].map(({ label, href }) => (
                 <li key={label}>
                   <Link to={href} className="text-offwhite-dark text-sm hover:text-mint transition-colors">
@@ -71,7 +71,7 @@ export default function Footer() {
                   solutions@ikonic303.dev
                 </a>
               </li>
-              <li className="text-offwhite-dark">Denver, CO · working with clients nationwide</li>
+              <li className="text-offwhite-dark">Colorado · working with clients nationwide</li>
             </ul>
 
             <div className="mt-6 p-4 bg-charcoal-light border border-white/10 rounded-xl">
@@ -82,33 +82,9 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-mint text-sm font-medium hover:gap-2 transition-all"
               >
-                Visit ikonic303.com
+                Visit our sister site, ikonic303.com
                 <ArrowUpRight className="w-4 h-4" />
               </a>
-            </div>
-
-            <div className="mt-6">
-              <p className="text-sm text-offwhite-dark mb-3">Follow</p>
-              <div className="flex gap-3">
-                <a
-                  href="https://www.facebook.com/ikonic303"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-charcoal-light border border-white/10 rounded-lg flex items-center justify-center hover:border-mint/30 hover:bg-mint/10 transition-all"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="w-4 h-4 text-offwhite" />
-                </a>
-                <a
-                  href="https://www.instagram.com/ikonic_303/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-charcoal-light border border-white/10 rounded-lg flex items-center justify-center hover:border-mint/30 hover:bg-mint/10 transition-all"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-4 h-4 text-offwhite" />
-                </a>
-              </div>
             </div>
           </div>
         </div>
@@ -116,7 +92,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="pt-8 border-t border-white/10 text-center">
           <p className="text-offwhite-dark text-sm">
-            © {new Date().getFullYear()} ikonic303. Forward Deployed Engineering &amp; growth systems.
+            © {new Date().getFullYear()} ikonic303. Forward deployed engineering for operating companies.
           </p>
         </div>
       </div>

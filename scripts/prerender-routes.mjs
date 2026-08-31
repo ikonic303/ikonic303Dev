@@ -31,159 +31,108 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { PAGES } from '../src/content/index.ts';
+import { pageToHtml } from '../src/content/emitHtml.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = join(__dirname, '..', 'dist');
 const ORIGIN = 'https://ikonic303.dev';
+const MIN_WORDS = 500;
 
 const PHONE = '(720) 679-1230';
 const CONTACT_BLOCK = `<h2>Get in touch</h2>
 <p>Call <a href="tel:+17206791230">${PHONE}</a> or email
-<a href="mailto:solutions@ikonic303.dev">solutions@ikonic303.dev</a> to book a strategy
-call or a free automation audit. ikonic303 is based in Denver, Colorado and works with clients
-nationwide. Looking for signage, window graphics, or architectural window film? That is our
-sister site, <a href="https://ikonic303.com">ikonic303.com</a>.</p>`;
+<a href="mailto:solutions@ikonic303.dev">solutions@ikonic303.dev</a> to start with the
+measurement. ikonic303 is based in Colorado and works with clients nationwide. Looking for
+signage, window graphics, or architectural window film? That is our sister site,
+<a href="https://ikonic303.com">ikonic303.com</a>.</p>`;
 
-/** @type {{path:string,title:string,description:string,body:string}[]} */
-const ROUTES = [
-  {
-    path: '/about',
-    title: 'About ikonic303 | Technology & Growth Partner for Growing Businesses',
-    description:
-      'ikonic303 is a Forward Deployed Engineering, AI, automation, CRM, and digital marketing partner. We design, build, integrate, and deploy the systems small and medium businesses need to scale.',
-    body: `<h1>About ikonic303</h1>
-<p>ikonic303 helps businesses deploy the technology, automation, AI, CRM, and marketing
-infrastructure they need to generate leads, improve operations, and scale. We work like a
-forward deployed engineering team: we embed with your business, map how work actually flows, and
-build the systems that remove the manual steps — then integrate them with the tools you already
-run on.</p>
-<p>We don't simply provide advice. We design, build, integrate, and deploy the actual systems,
-document them, and hand them over — with support while they bed into your operations. Based in
-Denver, Colorado; working with clients nationwide.</p>
-${CONTACT_BLOCK}`,
-  },
-  {
-    path: '/services',
-    title: 'Services — Forward Deployed Engineering, AI, CRM & Marketing | ikonic303',
-    description:
-      'ikonic303 services: Forward Deployed Engineering, AI & automation, CRM & sales systems, and digital marketing. We design, build, integrate, and deploy the systems growing businesses need.',
-    body: `<h1>ikonic303 services</h1>
-<p>Four connected practices, delivered as working systems inside your business — not
-recommendations. We design the system, build it, integrate it with your stack, and stay until
-it is running.</p>
-<h2>Forward Deployed Engineering</h2>
-<p>Custom business systems, API integrations, Zapier and workflow integrations, internal tools
-and dashboards, CRM integrations, and automation deployment. Engineers embedded with your team,
-shipping to production.</p>
-<h2>AI &amp; Automation</h2>
-<p>AI agents and assistants, AI front office / AI receptionist, AI lead qualification, automated
-follow-up, appointment booking automation, customer support automation, and business process
-automation — wired into the tools you already use.</p>
-<h2>CRM &amp; Sales Systems</h2>
-<p>GoHighLevel setup and management, CRM setup and optimization, sales pipeline automation, lead
-management systems, lead nurturing, email and SMS automation, and reporting dashboards.</p>
-<h2>Digital Marketing</h2>
-<p>Website development, landing pages and sales funnels, local SEO, SEO and AEO optimization,
-Google Business Profile optimization, paid ads and lead generation, social media marketing, and
-marketing analytics and tracking.</p>
-<h2>Why choose ikonic303?</h2>
-<p><strong>We deploy, not just advise</strong> — every engagement ends with a system running in
-production and documented. <strong>Integrated with your stack</strong> — one source of truth,
-not five disconnected apps. <strong>Measured on outcomes</strong> — more qualified leads, faster
-response, less manual work, higher conversion.</p>
-${CONTACT_BLOCK}`,
-  },
-  {
-    path: '/services/forward-deployed-engineering',
-    title: 'Forward Deployed Engineering | Custom Systems & Integrations | ikonic303',
-    description:
-      'We embed with your team and build the custom business systems, API integrations, internal tools, and automation your company runs on — deployed to production, not slide decks.',
-    body: `<h1>Forward Deployed Engineering</h1>
-<p>We work alongside your team, map how work actually flows, and build the systems that remove
-the manual steps: custom business systems, API integrations, Zapier and workflow integrations,
-internal tools and dashboards, CRM integrations, and automation deployment. Everything ships to
-production with monitoring and documentation, then a handover walkthrough.</p>
-${CONTACT_BLOCK}`,
-  },
-  {
-    path: '/services/ai-automation',
-    title: 'AI Automation & AI Agents | AI Receptionist & Lead Qualification | ikonic303',
-    description:
-      'AI agents and assistants that qualify leads, answer customers, book appointments, and automate repetitive work — deployed into your CRM and phone/website channels.',
-    body: `<h1>AI &amp; Automation</h1>
-<p>AI agents and assistants that handle conversations, qualify leads, book appointments, and take
-repetitive work off your team. AI front office / AI receptionist, AI lead qualification,
-automated follow-up, appointment booking automation, customer support automation, and business
-process automation — wired into the CRM, phone, and website you already use.</p>
-${CONTACT_BLOCK}`,
-  },
-  {
-    path: '/services/crm-sales-systems',
-    title: 'CRM & Sales Systems | GoHighLevel Setup & Automation | ikonic303',
-    description:
-      'GoHighLevel setup and optimization, sales pipeline automation, lead nurturing, and email/SMS sequences so every lead is tracked, followed up, and reported on.',
-    body: `<h1>CRM &amp; Sales Systems</h1>
-<p>We set up and optimize GoHighLevel — pipelines, automations, and email/SMS sequences — so
-leads are captured, nurtured, and followed up without anyone remembering to. Includes CRM setup
-and optimization, sales pipeline automation, lead management systems, lead nurturing, and
-reporting dashboards for pipeline value, conversion, and cost per lead.</p>
-${CONTACT_BLOCK}`,
-  },
-  {
-    path: '/services/digital-marketing',
-    title: 'Digital Marketing | Websites, Funnels, Local SEO & Paid Ads | ikonic303',
-    description:
-      'Website development, sales funnels, local SEO, SEO/AEO, Google Business Profile optimization, paid ads, and marketing analytics — built to generate qualified leads and tracked end to end.',
-    body: `<h1>Digital Marketing</h1>
-<p>Websites, landing pages and sales funnels, local SEO, SEO and AEO optimization, Google
-Business Profile optimization, paid ads and lead generation, social media marketing, and
-marketing analytics and tracking. Built as a lead-generation system connected to your CRM and
-measured on qualified leads and cost per lead.</p>
-${CONTACT_BLOCK}`,
-  },
-  {
-    path: '/how-we-work',
-    title: 'How We Work | Forward Deployed Engineering Process | ikonic303',
-    description:
-      'How ikonic303 scopes and ships: audit and map your operations, design one system at a time, build and deploy to production, then support and iterate. Fixed scope, full handover.',
-    body: `<h1>How we work</h1>
-<p>We work like a forward deployed engineering team. First we audit and map how work flows and
-where leads and time leak. Then we design one system at a time with a fixed scope agreed up
-front, build and deploy it to production integrated with your stack, and support it while it
-beds in — before moving to the next highest-leverage build. You own the accounts, the code, and
-the data.</p>
-${CONTACT_BLOCK}`,
-  },
-  {
-    path: '/contact',
-    title: 'Contact ikonic303 | Book a Strategy Call or Free Automation Audit',
-    description:
-      "Book a strategy call or request a free automation audit. We'll map the highest-leverage AI, CRM, and marketing system to build for your business. Call (720) 679-1230.",
-    body: `<h1>Contact ikonic303</h1>
-<p>Tell us where the manual work and dropped leads are. We'll map the highest-leverage
-automation and show you what we'd build first — usually within one business day.</p>
-${CONTACT_BLOCK}`,
-  },
+// Site nav + footer, mirroring what <Navigation> and <Footer> render on every SPA page.
+// Emitted into every content route's crawler HTML so the static view carries the same
+// wayfinding and site context a browser gets, not a bare fragment.
+const SITE_CHROME = `<hr />
+<nav aria-label="Site">
+<p><strong>ikonic303</strong> — forward deployed engineering for operating companies of 50 to 500
+people. We embed with your team, measure what one workflow costs you today, build the software
+into your existing stack on your accounts, and stay long enough to operate it. Not a strategy
+deck. Not a pilot.</p>
+<p>Explore:
+<a href="${ORIGIN}/forward-deployed-engineering">What is a forward deployed engineer?</a> ·
+<a href="${ORIGIN}/forward-deployed-engineer-vs-consultant">Forward deployed engineer vs consultant</a> ·
+<a href="${ORIGIN}/forward-deployed-engineer-vs-hiring">Hire one or buy an engagement</a> ·
+<a href="${ORIGIN}/fractional-forward-deployed-engineer">Fractional forward deployed engineer</a> ·
+<a href="${ORIGIN}/how-we-work">How an engagement runs</a> ·
+<a href="${ORIGIN}/what-it-costs">What it costs</a> ·
+<a href="${ORIGIN}/who-we-work-with">Who we work with</a> ·
+<a href="${ORIGIN}/about">About</a> ·
+<a href="${ORIGIN}/contact">Contact</a></p>
+<p>What we build:
+<a href="${ORIGIN}/services">Services overview</a> ·
+<a href="${ORIGIN}/services/ai-agents-and-automation">AI agents and automation</a> ·
+<a href="${ORIGIN}/services/crm-and-sales-systems">CRM and sales systems</a> ·
+<a href="${ORIGIN}/services/internal-tools-and-dashboards">Internal tools and dashboards</a> ·
+<a href="${ORIGIN}/services/marketing-systems">Marketing systems</a>.
+Everything runs on your accounts, inside your stack, documented, with your team trained on it —
+the test we build to is whether it keeps running if we stop answering the phone.</p>
+</nav>
+${CONTACT_BLOCK}`;
+
+/** Rough word count of a fragment of HTML, tags stripped. */
+const htmlWords = (html) =>
+  html
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&[a-z]+;/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean).length;
+
+// Routes that are not (yet) content-as-data pages. Everything else is generated
+// from src/content so the crawler HTML and the SPA can never drift.
+const STATIC_ROUTES = [
   {
     path: '/blogs',
-    title: 'Insights | AI, Automation, CRM & Growth Systems | ikonic303',
+    title: 'Insights — Measuring, Choosing and Deploying | ikonic303',
     description:
-      'Practical guides on AI automation, CRM and sales systems, integrations, local SEO, and lead generation for small and medium businesses.',
+      'Practical guides on measuring what a workflow costs, choosing what to automate first, and not getting locked into whoever builds it.',
     body: `<h1>ikonic303 insights</h1>
-<p>Practical guides on AI automation, CRM and sales systems, integrations, local SEO, and lead
-generation — written for owners and operators of growing businesses.</p>`,
+<p>Practical guides on measuring what a manual workflow costs, choosing which one to fix first,
+deploying it without a pilot, and keeping ownership of the result — written for owners and
+operators of operating companies between 50 and 500 people.</p>
+${CONTACT_BLOCK}`,
   },
   {
     path: '/careers',
-    title: 'Careers at ikonic303 | Automation Engineers & Growth Systems Builders',
+    title: 'Careers at ikonic303 | Forward Deployed Engineers',
     description:
-      "Join ikonic303. We're hiring forward deployed engineers, automation and CRM builders, and growth-systems specialists who like shipping systems into real businesses.",
+      "Join ikonic303. We're hiring forward deployed engineers who like embedding with a business, measuring the real cost of a workflow, and shipping the system that removes it.",
     body: `<h1>Careers at ikonic303</h1>
-<p>We're growing our team of forward deployed engineers and automation builders — people who
-like deploying AI, CRM, and marketing systems into real businesses. Denver-based or remote.</p>
+<p>We're a small forward deployed engineering practice — people who like embedding with an
+operating company, measuring what a workflow really costs, and building the system that removes
+most of that cost into production. Colorado-based or remote.</p>
 ${CONTACT_BLOCK}`,
   },
 ];
+
+const CONTENT_ROUTES = PAGES.map((p) => {
+  const body = pageToHtml(p) + '\n' + SITE_CHROME;
+  return {
+    path: p.slug,
+    title: p.seo.title,
+    description: p.seo.description,
+    body,
+    _words: htmlWords(body),
+  };
+});
+
+for (const r of CONTENT_ROUTES) {
+  if (r._words < MIN_WORDS) {
+    console.warn(
+      `prerender: WARNING ${r.path} crawler HTML is ~${r._words} words, floor is ${MIN_WORDS}`,
+    );
+  }
+}
+
+/** @type {{path:string,title:string,description:string,body:string}[]} */
+const ROUTES = [...CONTENT_ROUTES, ...STATIC_ROUTES];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -198,7 +147,9 @@ function jsonLd(obj) {
 }
 
 function setTag(html, attrRe, value) {
-  return html.replace(attrRe, (m) => m.replace(/content="[^"]*"/, `content="${esc(value)}"`));
+  const replacement = `content="${esc(value)}"`;
+  // Function replacements so a "$" in `value` is never read as a capture reference.
+  return html.replace(attrRe, (m) => m.replace(/content="[^"]*"/, () => replacement));
 }
 
 function buildPage(template, route) {
@@ -236,7 +187,9 @@ function buildPage(template, route) {
            <a href="${ORIGIN}/contact">contact</a></p>
       </main>
     `;
-  html = html.replace(rootRe, `$1${fallback}$2`);
+  // Function replacement, not a string: route.body contains literal "$10,260" etc.,
+  // and String.replace would interpret "$1" as a capture-group reference.
+  html = html.replace(rootRe, (_m, open, close) => open + fallback + close);
   return html;
 }
 
@@ -313,7 +266,10 @@ function buildPost(template, post) {
       </main>
       <script type="application/ld+json">${jsonLd(schema)}</script>
     `;
-  return html.replace(/(<div id="root">)[\s\S]*?(<\/div>\s*(?:<script|<\/body>))/, `$1${body}$2`);
+  return html.replace(
+    /(<div id="root">)[\s\S]*?(<\/div>\s*(?:<script|<\/body>))/,
+    (_m, open, close) => open + body + close,
+  );
 }
 
 // Moon River (Rios's Brighton construction business) categories. The daily generator is
@@ -431,7 +387,7 @@ function build404(template) {
         <p>Or call <a href="tel:+17206791230">(720) 679-1230</a>.</p>
       </main>
     `;
-  return html.replace(rootRe, `$1${body}$2`);
+  return html.replace(rootRe, (_m, open, close) => open + body + close);
 }
 
 async function main() {

@@ -18,6 +18,12 @@ interface PageSEOProps {
   ogImage?: string;
   ogType?: 'website' | 'article';
   noIndex?: boolean;
+  /**
+   * Append " | ikonic303" when the title doesn't already name the brand.
+   * The editorial pages carry their own final <title> (<=60 chars, no suffix) and
+   * pass false so the SPA <title> matches the prerendered one exactly.
+   */
+  appendSiteName?: boolean;
 }
 
 export default function PageSEO({
@@ -27,10 +33,12 @@ export default function PageSEO({
   ogImage = DEFAULT_IMAGE,
   ogType = 'website',
   noIndex = false,
+  appendSiteName = true,
 }: PageSEOProps) {
-  const fullTitle = title.toLowerCase().includes(SITE_NAME.toLowerCase())
-    ? title
-    : `${title} | ${SITE_NAME}`;
+  const fullTitle =
+    !appendSiteName || title.toLowerCase().includes(SITE_NAME.toLowerCase())
+      ? title
+      : `${title} | ${SITE_NAME}`;
   const canonicalUrl = canonical ? `${BASE_URL}${canonical}` : undefined;
 
   return (

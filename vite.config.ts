@@ -13,16 +13,23 @@ export default defineConfig({
       // Serve public/robots.txt verbatim; don't let the plugin overwrite it with its
       // minimal auto-generated robots.txt.
       generateRobotsTxt: false,
-      // ikonic303.dev — the technology / growth-systems site. Physical signage and
+      // ikonic303.dev — the forward deployed engineering practice. Physical signage and
       // window-film routes live on ikonic303.com and are not part of this sitemap.
+      // Keep in sync with src/content/index.ts (PAGE_ROUTES) and the prerender script.
       dynamicRoutes: [
         '/',
-        '/services',
-        '/services/forward-deployed-engineering',
-        '/services/ai-automation',
-        '/services/crm-sales-systems',
-        '/services/digital-marketing',
+        '/forward-deployed-engineering',
+        '/forward-deployed-engineer-vs-consultant',
+        '/forward-deployed-engineer-vs-hiring',
+        '/fractional-forward-deployed-engineer',
         '/how-we-work',
+        '/what-it-costs',
+        '/who-we-work-with',
+        '/services',
+        '/services/ai-agents-and-automation',
+        '/services/crm-and-sales-systems',
+        '/services/internal-tools-and-dashboards',
+        '/services/marketing-systems',
         '/about',
         '/contact',
         '/careers',
