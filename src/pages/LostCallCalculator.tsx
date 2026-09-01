@@ -149,20 +149,20 @@ export default function LostCallCalculator() {
 
             {/* CTA */}
             <a
-              href="tel:7206791230"
+              href="mailto:solutions@ikonic303.dev"
               className="flex items-center justify-center gap-3 w-full bg-mint hover:bg-mint-dark text-charcoal font-bold text-lg py-4 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-mint/30"
             >
               <PhoneCall className="w-5 h-5" />
               <div className="text-left">
-                <div>Stop Losing Money — Call Now</div>
-                <div className="text-sm font-medium opacity-80">720.679.1230</div>
+                <div>Stop Losing Money — Get in touch</div>
+                <div className="text-sm font-medium opacity-80">solutions@ikonic303.dev</div>
               </div>
             </a>
 
             <p className="text-center text-xs text-offwhite-dark/50 mt-4">
               Powered by{' '}
-              <a href="https://ikonicmarketing303.com" className="text-mint hover:underline">
-                ikonic 303
+              <a href="https://ikonic303.dev" className="text-mint hover:underline">
+                ikonic303
               </a>
             </p>
           </div>

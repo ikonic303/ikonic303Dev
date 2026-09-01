@@ -20,6 +20,9 @@ const InternalToolsAndDashboards = lazy(() => import('./pages/InternalToolsAndDa
 const MarketingSystems = lazy(() => import('./pages/MarketingSystems'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
+const GuidesIndex = lazy(() => import('./pages/GuidesIndex'));
+const GuideRoute = lazy(() => import('./pages/GuideRoute'));
+const IndustryRoute = lazy(() => import('./pages/IndustryRoute'));
 const Careers = lazy(() => import('./pages/Careers'));
 const Blogs = lazy(() => import('./pages/Blogs'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
@@ -84,8 +87,13 @@ function App() {
             <Route path="/how-we-work" element={<HowWeWork />} />
             <Route path="/what-it-costs" element={<WhatItCosts />} />
             <Route path="/who-we-work-with" element={<WhoWeWorkWith />} />
+            <Route path="/industries/:slug" element={<IndustryRoute />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+
+            {/* Guides */}
+            <Route path="/guides" element={<GuidesIndex />} />
+            <Route path="/guides/:slug" element={<GuideRoute />} />
 
             {/* Services */}
             <Route path="/services" element={<AllServices />} />

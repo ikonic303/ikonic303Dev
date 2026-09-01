@@ -484,12 +484,12 @@ export default function PrintAndShip() {
 
               <div style={{ width: '100%', height: 1, background: 'rgba(255,255,255,.06)', marginBottom: 18 }} />
 
-              <a href="tel:7206791230" style={{
+              <a href="mailto:solutions@ikonic303.dev" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10,
                 background: 'rgba(59,130,246,.1)', color: '#93c5fd', border: '1px solid rgba(59,130,246,.2)',
                 borderRadius: 12, padding: '12px 28px', fontSize: 14, fontWeight: 600,
                 textDecoration: 'none', fontFamily: 'inherit',
-              }}>📞 Prefer to call? (720) 679-1230</a>
+              }}>✉ Prefer email? solutions@ikonic303.dev</a>
 
               <div style={{ marginTop: 14 }}>
                 <button onClick={reset} style={{

@@ -150,7 +150,7 @@ export default function AIWebsiteGenerator() {
         sessionStorage.removeItem('ikonic:generator-form');
         window.history.replaceState({}, '', '/ai-website-generator');
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Something went wrong. Please call (720) 679-1230.');
+        setError(err instanceof Error ? err.message : 'Something went wrong. Please email solutions@ikonic303.dev.');
       } finally {
         setLoading(false);
       }

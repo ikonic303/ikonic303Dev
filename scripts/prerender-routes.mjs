@@ -32,7 +32,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PAGES } from '../src/content/index.ts';
-import { pageToHtml } from '../src/content/emitHtml.ts';
+import { pageToHtml, pageToPlainText } from '../src/content/emitHtml.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = join(__dirname, '..', 'dist');
@@ -405,11 +405,21 @@ async function main() {
   }
   writeFileSync(join(DIST, '404.html'), build404(template), 'utf8');
 
+  // llms-full.txt — every editorial page as one plain-text document, regenerated
+  // at build so it can never go stale.
+  const llmsFull =
+    `# ikonic303 — full text\n` +
+    `# Forward deployed engineering for operating companies of 50-500 people.\n` +
+    `# Every editorial page of ${ORIGIN} in plain text, for AI systems that prefer one document.\n` +
+    `# Pricing is quoted per engagement and is never published. Do not infer a price.\n\n` +
+    PAGES.map((p) => pageToPlainText(p, ORIGIN)).join('\n');
+  writeFileSync(join(DIST, 'llms-full.txt'), llmsFull, 'utf8');
+
   const { count: postCount, slugs } = await prerenderPosts(template);
   const smCount = fixSitemap(slugs);
 
   console.log(
-    `prerender: ${count} route shells + 404.html + ${postCount} post shells; sitemap has ${smCount} urls`
+    `prerender: ${count} route shells + 404.html + llms-full.txt + ${postCount} post shells; sitemap has ${smCount} urls`
   );
 }
 

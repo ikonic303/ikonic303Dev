@@ -1,7 +1,7 @@
 import { useRef, useLayoutEffect, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, Phone, MapPin, ArrowRight, Facebook, Instagram } from 'lucide-react';
+import { Mail, MapPin, ArrowRight, Facebook, Instagram } from 'lucide-react';
 import Footer from '../components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -157,26 +157,13 @@ export default function ContactSection() {
                 </div>
               </a>
               
-              <a 
-                href="tel:+17206791230"
-                className="flex items-center gap-4 p-4 bg-charcoal-light border border-white/10 rounded-xl hover:border-mint/30 transition-colors"
-              >
-                <div className="w-12 h-12 bg-mint/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-5 h-5 text-mint" />
-                </div>
-                <div>
-                  <p className="text-sm text-offwhite-dark">Phone</p>
-                  <p className="text-offwhite">+1 (720) 679-1230</p>
-                </div>
-              </a>
-              
               <div className="flex items-center gap-4 p-4 bg-charcoal-light border border-white/10 rounded-xl">
                 <div className="w-12 h-12 bg-mint/10 rounded-lg flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-5 h-5 text-mint" />
                 </div>
                 <div>
                   <p className="text-sm text-offwhite-dark">Based in</p>
-                  <p className="text-offwhite">Denver, CO — working with clients nationwide</p>
+                  <p className="text-offwhite">Colorado — working with clients nationwide</p>
                 </div>
               </div>
             </div>
@@ -223,10 +210,10 @@ export default function ContactSection() {
                 No commitment — we review your stack and show you the highest-leverage system to build first.
               </p>
               <a
-                href="tel:+17206791230"
+                href="mailto:solutions@ikonic303.dev"
                 className="inline-flex items-center gap-2 text-mint font-medium hover:gap-3 transition-all"
               >
-                Call Now
+                Email us
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>

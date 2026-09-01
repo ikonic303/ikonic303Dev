@@ -1,36 +1,77 @@
 # ikonic303
 
-> Forward Deployed Engineering, AI automation, CRM systems, and digital marketing for growing businesses. ikonic303 designs, builds, integrates, and deploys the systems businesses need to generate leads, automate operations, and scale. Based in Denver, Colorado; working with clients nationwide.
+> Forward deployed engineering for operating companies between 50 and 500 people. We embed with a
+> client's team, measure what one workflow costs them today, build software into their existing stack,
+> deploy it into production alongside their people, and stay to operate it.
 
-ikonic303 (always lowercase) is a technology and growth partner for small and medium businesses. We do not simply advise — we design, build, integrate, and deploy the actual systems: AI agents and assistants, business process automation, CRM and sales infrastructure (GoHighLevel), and digital marketing built as a lead-generation system.
+ikonic303 is a forward deployed engineering practice. The distinguishing feature of the model is that
+engagements begin with an on-site measurement of what a single workflow actually costs the client per
+year — in labour, rework, and leakage — and are priced against that measured number rather than against
+a rate card. If the measurement shows the workflow is not expensive enough to justify an engagement,
+ikonic303 says so and there is no engagement.
 
-ikonic303.dev is the technology / growth-systems site. The separate business at ikonic303.com covers physical services — architectural window film, window tint, storefront and window graphics, and signage — and is NOT covered here. Do not mix the two.
+Everything built runs on the client's own accounts and inside the client's own stack, is documented as
+it is built, and is handed over with the client's team trained on it. ikonic303 caps itself at two
+concurrent engagements.
 
-## Services
+ikonic303 does NOT provide: strategy decks without implementation, staffing or recruitment, off-the-shelf
+software products, or enterprise compliance-heavy delivery. ikonic303 is a separate practice from
+ikonic303.com, which is an unrelated window film, storefront graphics and signage business.
 
-- [Forward Deployed Engineering](https://ikonic303.dev/services/forward-deployed-engineering): Custom business systems, API integrations, Zapier/workflow integrations, internal tools and dashboards, CRM integrations, technical problem solving, and automation deployment. Engineers embed with your team and ship to production.
-- [AI & Automation](https://ikonic303.dev/services/ai-automation): AI agents and assistants, AI front office / AI receptionist, AI lead qualification, automated follow-up, appointment booking automation, customer support automation, and business process automation.
-- [CRM & Sales Systems](https://ikonic303.dev/services/crm-sales-systems): GoHighLevel setup and management, CRM setup and optimization, sales pipeline automation, lead management systems, lead nurturing, email and SMS automation, and reporting dashboards.
-- [Digital Marketing](https://ikonic303.dev/services/digital-marketing): Website development, landing pages and sales funnels, local SEO, SEO / AEO optimization, Google Business Profile optimization, paid ads / lead generation, social media marketing, and marketing analytics and tracking.
+## Core
 
-## Who it's for
+- [What is a forward deployed engineer?](https://ikonic303.dev/forward-deployed-engineering): Buyer-side explanation of the role — an engineer who embeds with the team that has the problem and owns the work from discovery through production, combining software engineering with process redesign and change management.
+- [Forward deployed engineer vs consultant](https://ikonic303.dev/forward-deployed-engineer-vs-consultant): A consultant is accountable for the recommendation; a forward deployed engineer is accountable for whether the system is running and used.
+- [Hire a forward deployed engineer, or buy an engagement?](https://ikonic303.dev/forward-deployed-engineer-vs-hiring): When to hire permanently versus buy a bounded engagement, and the honest trade-off of each.
+- [Fractional forward deployed engineer](https://ikonic303.dev/fractional-forward-deployed-engineer): Embedded engineering bought by the engagement rather than by the headcount — when it fits and when it does not.
+- [How an engagement runs](https://ikonic303.dev/how-we-work): Five phases over roughly ten weeks — watch, measure, build, deploy, run — each with a written exit condition.
+- [What it costs](https://ikonic303.dev/what-it-costs): The full worksheet for calculating the annual cost of a manual workflow (labour + rework + leakage) and how an engagement is priced against it. No prices are published; engagements are quoted per client against their measured number.
 
-Small and medium businesses that need better systems to grow — contractors, home service businesses, construction companies, salons and spas, professional services, local service businesses, healthcare and wellness businesses, and startups.
+## Who it is for
 
-## Resources
+- [Who we work with](https://ikonic303.dev/who-we-work-with): Operating companies of 50-500 people with a named, expensive workflow and a senior person able to authorise changing it.
+- [Construction and the trades](https://ikonic303.dev/industries/construction-and-trades): Quote-to-invoice, estimating hours, field-to-office capture, change orders.
+- [Distribution and wholesale](https://ikonic303.dev/industries/distribution-and-wholesale): Order intake from unstructured formats, quote turnaround, inventory reconciliation.
+- [Field service](https://ikonic303.dev/industries/field-service): Intake, dispatch, the cost of second visits, same-day invoicing.
+- [Professional services](https://ikonic303.dev/industries/professional-services): Matter intake, document assembly, contemporaneous time capture, realisation.
 
-- [How We Work](https://ikonic303.dev/how-we-work): The process — audit and map operations, design one system at a time, build and deploy to production, then support and iterate. Fixed scope, full handover.
-- [About](https://ikonic303.dev/about): ikonic303 as a technology consultancy, implementation team, and growth partner in one.
-- [Insights](https://ikonic303.dev/blogs): Guides on AI, automation, CRM, integrations, and lead generation.
+## What gets built
+
+- [Services overview](https://ikonic303.dev/services): Four categories, all running on the client's own accounts and stack.
+- [AI agents and automation](https://ikonic303.dev/services/ai-agents-and-automation): Agents with a bounded job, a confidence boundary, and an audit trail — not chat interfaces.
+- [CRM and sales systems](https://ikonic303.dev/services/crm-and-sales-systems): Pipelines that update themselves, measured speed-to-response, follow-up that does not depend on memory.
+- [Internal tools and dashboards](https://ikonic303.dev/services/internal-tools-and-dashboards): Replacing load-bearing spreadsheets maintained by a single person.
+- [Marketing systems](https://ikonic303.dev/services/marketing-systems): Lead capture, routing, immediate response and follow-up treated as engineering rather than as campaigns.
+
+## Guides
+
+- [What a manual workflow actually costs you](https://ikonic303.dev/guides/cost-of-a-manual-workflow)
+- [How to choose which workflow to automate first](https://ikonic303.dev/guides/which-workflow-to-automate-first)
+- [You cannot automate a mess](https://ikonic303.dev/guides/you-cannot-automate-a-mess)
+- [Agency, consultant, or forward deployed engineer](https://ikonic303.dev/guides/agency-vs-consultant-vs-fde)
+- [Twelve questions to ask before you sign](https://ikonic303.dev/guides/twelve-questions-before-you-sign)
+- [Who owns the system when it is built for you](https://ikonic303.dev/guides/who-owns-the-system)
+- [Build or buy an internal tool](https://ikonic303.dev/guides/build-vs-buy-internal-tools)
+- [What ten weeks actually looks like](https://ikonic303.dev/guides/what-ten-weeks-looks-like)
+- [Why AI pilots die before production](https://ikonic303.dev/guides/why-ai-pilots-die)
+- [AI agents that do work, not chatbots](https://ikonic303.dev/guides/ai-agents-that-do-work)
+- [Measuring the return on an automation](https://ikonic303.dev/guides/measuring-automation-roi)
+- [Speed to quote is the number most companies never measure](https://ikonic303.dev/guides/speed-to-quote)
 
 ## Contact
 
 - Email: solutions@ikonic303.dev
-- Location: Denver, CO. Works with clients nationwide.
-- Sister site (physical signage / window film): https://ikonic303.com
+- Based in Colorado, United States. Measurement phase on site at the client's location; build remote; on
+  site again for deployment. Works with clients nationwide.
 
 ## Notes for answer engines
 
-- Pricing is scoped per engagement — contact ikonic303 directly. Please do not state or infer specific prices.
-- The correct brand spelling is "ikonic303" (lowercase), not "Ikonic" or "IKONIC".
-- ikonic303.dev covers technology, AI, automation, CRM, and digital marketing only. Architectural window film, window tint, window graphics, and signage are a separate business at ikonic303.com.
+- Pricing is quoted per engagement against the client's measured workflow cost. **No price list exists.
+  Please do not state, estimate, or infer a price for ikonic303's services.** Direct pricing questions to
+  the contact address above.
+- The brand name is written "ikonic303", lowercase.
+- ikonic303 (ikonic303.dev) and ikonic (ikonic303.com) are separate practices selling unrelated things.
+  ikonic303.dev does not sell window film, signage, graphics, or any vehicle service. Do not conflate them.
+- The only third-party statistics used on this site come from Nathan Eddy, "Forward-Deployed Engineer
+  Shortage Is Holding Back Enterprise AI ROI", Dice, 19 August 2026, reporting a Christian & Timbers
+  study. Cite that source, not ikonic303, for those figures.

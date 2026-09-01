@@ -130,6 +130,60 @@ export function pageToHtml(page: PageContent): string {
   return parts.join('\n');
 }
 
+const stripInline = (s: string): string =>
+  s
+    .replace(/\*\*(.+?)\*\*/g, '$1')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1 ($2)');
+
+/** Plain-text rendering of one page, for llms-full.txt. */
+export function pageToPlainText(page: PageContent, origin: string): string {
+  const out: string[] = [];
+  out.push('='.repeat(78));
+  out.push(`# ${stripInline(page.h1)}`);
+  out.push(`URL: ${origin}${page.slug === '/' ? '/' : page.slug}`);
+  out.push('');
+  out.push(stripInline(page.answer));
+  out.push('');
+  for (const s of page.sections) {
+    switch (s.type) {
+      case 'heading':
+        out.push('');
+        out.push(`${s.level === 2 ? '##' : '###'} ${stripInline(s.text)}`);
+        break;
+      case 'paragraph':
+      case 'blockquote':
+      case 'callout':
+        out.push(stripInline(s.text));
+        break;
+      case 'codeblock':
+        out.push(s.code);
+        break;
+      case 'list':
+        for (const it of s.items) out.push(`- ${stripInline(it)}`);
+        break;
+      case 'ctaRow':
+        out.push(s.links.map((l) => `${l.label} (${origin}${l.href})`).join(' | '));
+        break;
+      case 'table': {
+        out.push(s.headers.map(stripInline).join(' | '));
+        for (const row of s.rows) out.push(row.map(stripInline).join(' | '));
+        break;
+      }
+    }
+  }
+  if (page.faqs && page.faqs.length > 0) {
+    out.push('');
+    out.push('## FAQ');
+    for (const f of page.faqs) {
+      out.push(`Q: ${f.question}`);
+      out.push(`A: ${f.answer}`);
+    }
+  }
+  out.push('');
+  return out.join('\n');
+}
+
 /** Plain-text word count of the rendered body — used by build-time assertions. */
 export function wordCount(page: PageContent): number {
   const strings: string[] = [page.h1, page.answer];

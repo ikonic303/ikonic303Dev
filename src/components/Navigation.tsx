@@ -66,7 +66,7 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-4 xl:gap-6">
+          <div className="hidden lg:flex items-center gap-3 xl:gap-5">
             <Link to="/" className={deskCls('/')}>
               Home
             </Link>
@@ -122,6 +122,10 @@ export default function Navigation() {
 
             <Link to="/who-we-work-with" className={deskCls('/who-we-work-with')}>
               Who We Work With
+            </Link>
+
+            <Link to="/guides" className={deskCls('/guides')}>
+              Guides
             </Link>
 
             <Link to="/about" className={deskCls('/about')}>
@@ -193,6 +197,9 @@ export default function Navigation() {
             </Link>
             <Link to="/who-we-work-with" className={mobCls('/who-we-work-with')}>
               Who We Work With
+            </Link>
+            <Link to="/guides" className={mobCls('/guides')}>
+              Guides
             </Link>
             <Link to="/about" className={mobCls('/about')}>
               About

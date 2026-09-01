@@ -262,7 +262,7 @@ export default function StickerBuilder() {
       if (data.checkoutUrl) window.location.href = data.checkoutUrl;
       else throw new Error(data.error || 'No checkout URL');
     } catch (err: any) {
-      setFormError(`Something went wrong: ${err.message}. Please call 720.679.1230.`);
+      setFormError(`Something went wrong: ${err.message}. Please email solutions@ikonic303.dev.`);
       setSubmitting(false);
     }
   };

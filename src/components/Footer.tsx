@@ -46,6 +46,7 @@ export default function Footer() {
                 { label: 'How an engagement runs', href: '/how-we-work' },
                 { label: 'What it costs', href: '/what-it-costs' },
                 { label: 'Who we work with', href: '/who-we-work-with' },
+                { label: 'Guides', href: '/guides' },
                 { label: 'About', href: '/about' },
               ].map(({ label, href }) => (
                 <li key={label}>
