@@ -43,12 +43,12 @@ export default function NotFound() {
             </Link>
             <Link to="/contact" className="block bg-charcoal-light/80 border border-white/10 rounded-xl px-5 py-4 hover:border-mint transition-colors">
               <span className="block text-offwhite font-medium">Contact</span>
-              <span className="block text-offwhite-dark text-sm">Book a strategy call</span>
+              <span className="block text-offwhite-dark text-sm">Start with the measurement</span>
             </Link>
           </div>
 
           <p className="text-offwhite-dark text-sm">
-            Or call <a href="tel:+17206791230" className="text-mint hover:underline">(720) 679-1230</a>
+            Or email <a href="mailto:solutions@ikonic303.dev" className="text-mint hover:underline">solutions@ikonic303.dev</a>
           </p>
         </div>
       </main>

@@ -62,11 +62,6 @@ export default function Footer() {
             <h4 className="text-offwhite font-medium mb-4">Get in touch</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="tel:+17206791230" className="text-offwhite-dark hover:text-mint transition-colors">
-                  (720) 679-1230
-                </a>
-              </li>
-              <li>
                 <a href="mailto:solutions@ikonic303.dev" className="text-offwhite-dark hover:text-mint transition-colors">
                   solutions@ikonic303.dev
                 </a>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import MatrixBackground from '../components/MatrixBackground';
 import Footer from '../components/Footer';
@@ -50,8 +50,8 @@ export default function Home() {
             <p className="text-base sm:text-lg text-offwhite-dark max-w-2xl mb-8">{home.answer}</p>
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-10">
               <Link to="/contact" className="btn-primary inline-flex items-center justify-center gap-2">
-                <Phone className="w-5 h-5 shrink-0" />
                 Start with the measurement
+                <ArrowRight className="w-5 h-5 shrink-0" />
               </Link>
               <Link to="/how-we-work" className="btn-outline text-center">
                 See how an engagement runs
@@ -86,13 +86,9 @@ export default function Home() {
               Tell us which workflow everybody complains about. We will tell you, honestly, whether
               there is enough in it to be worth anyone's money — including when the answer is no.
             </p>
-            <p className="text-offwhite-dark mb-8 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+            <p className="text-offwhite-dark mb-8">
               <a href="mailto:solutions@ikonic303.dev" className="text-mint hover:text-mint-light break-all">
                 solutions@ikonic303.dev
-              </a>
-              <span className="hidden sm:inline text-white/30">·</span>
-              <a href="tel:+17206791230" className="text-mint hover:text-mint-light">
-                (720) 679-1230
               </a>
             </p>
             <Link

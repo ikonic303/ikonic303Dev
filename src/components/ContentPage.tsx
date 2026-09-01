@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Navigation from './Navigation';
 import MatrixBackground from './MatrixBackground';
 import Footer from './Footer';
@@ -77,8 +77,8 @@ export default function ContentPage({ page }: { page: PageContent }) {
             to="/contact"
             className="btn-primary inline-flex items-center justify-center gap-2 sm:text-lg sm:px-8 sm:py-4"
           >
-            <Phone className="w-5 h-5 shrink-0" />
             Start with the measurement
+            <ArrowRight className="w-5 h-5 shrink-0" />
           </Link>
         </div>
       </section>

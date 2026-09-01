@@ -14,7 +14,6 @@ const contactSchema: Record<string, unknown> = {
     name: 'ikonic303',
     url: `${ORIGIN}/`,
     email: 'solutions@ikonic303.dev',
-    telephone: '+1-720-679-1230',
     areaServed: { '@type': 'Country', name: 'United States' },
   },
 };
@@ -51,9 +50,8 @@ export const contact: PageContent = {
     { type: 'heading', level: 2, text: 'How to reach us' },
     {
       type: 'paragraph',
-      text: '**Email — solutions@ikonic303.dev.** Best first contact. Describe the workflow in a few lines; you will get a real reply from a person.',
+      text: '**Email — solutions@ikonic303.dev.** The best first contact. Describe the workflow in a few lines — which one it is, roughly how many people touch it, and what breaks when it goes wrong — and you will get a real reply from a person, Monday to Friday.',
     },
-    { type: 'paragraph', text: '**Phone — (720) 679-1230.** Monday to Friday.' },
     {
       type: 'paragraph',
       text: '**Where we are:** Colorado. The measurement phase happens on site wherever you are; the build is remote; we come back for deployment.',

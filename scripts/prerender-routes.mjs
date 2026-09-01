@@ -39,10 +39,8 @@ const DIST = join(__dirname, '..', 'dist');
 const ORIGIN = 'https://ikonic303.dev';
 const MIN_WORDS = 500;
 
-const PHONE = '(720) 679-1230';
 const CONTACT_BLOCK = `<h2>Get in touch</h2>
-<p>Call <a href="tel:+17206791230">${PHONE}</a> or email
-<a href="mailto:solutions@ikonic303.dev">solutions@ikonic303.dev</a> to start with the
+<p>Email <a href="mailto:solutions@ikonic303.dev">solutions@ikonic303.dev</a> to start with the
 measurement. ikonic303 is based in Colorado and works with clients nationwide. Looking for
 signage, window graphics, or architectural window film? That is our sister site,
 <a href="https://ikonic303.com">ikonic303.com</a>.</p>`;
@@ -384,7 +382,7 @@ function build404(template) {
            <a href="${ORIGIN}/services">services</a> ·
            <a href="${ORIGIN}/how-we-work">how we work</a> ·
            <a href="${ORIGIN}/contact">contact</a></p>
-        <p>Or call <a href="tel:+17206791230">(720) 679-1230</a>.</p>
+        <p>Or email <a href="mailto:solutions@ikonic303.dev">solutions@ikonic303.dev</a>.</p>
       </main>
     `;
   return html.replace(rootRe, (_m, open, close) => open + body + close);
