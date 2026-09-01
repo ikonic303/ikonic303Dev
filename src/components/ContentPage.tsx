@@ -43,16 +43,37 @@ export default function ContentPage({ page }: { page: PageContent }) {
       <Navigation />
 
       <article className="pt-28 sm:pt-32 pb-16 px-[6vw] relative z-10">
-        <div className="max-w-3xl mx-auto">
+        <div key={page.slug} className="max-w-3xl mx-auto fd-rise">
           <Breadcrumb crumbs={page.breadcrumb} />
-          {page.eyebrow && <p className="text-micro text-mint mb-4">{page.eyebrow}</p>}
-          <h1 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-offwhite mb-6 leading-tight break-words">
+          {page.eyebrow && (
+            <p className="text-micro text-mint mb-4 tracking-[0.2em]">{page.eyebrow}</p>
+          )}
+          <h1 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-offwhite mb-8 leading-[1.15] break-words">
             {page.h1}
           </h1>
-          <p className="text-base sm:text-lg text-offwhite font-medium leading-relaxed border-l-2 border-mint pl-4 mb-10">
+          <p className="text-base sm:text-lg text-offwhite font-medium leading-relaxed rounded-xl border border-mint/25 bg-mint/[0.06] px-5 py-4 mb-12">
             {page.answer}
           </p>
           <RenderSections sections={page.sections} />
+
+          {page.related && page.related.length > 0 && (
+            <nav aria-label="Related pages" className="mt-16 border-t border-white/10 pt-8">
+              <p className="text-micro text-mint mb-4 tracking-[0.2em]">Keep reading</p>
+              <ul className="grid gap-2 sm:grid-cols-2">
+                {page.related.map((r) => (
+                  <li key={r.href}>
+                    <Link
+                      to={r.href}
+                      className="group flex items-center justify-between gap-3 rounded-lg border border-white/10 bg-charcoal-light/60 px-4 py-3 text-sm text-offwhite hover:border-mint/40 hover:bg-mint/[0.06] transition-colors"
+                    >
+                      <span>{r.label}</span>
+                      <ArrowRight className="w-4 h-4 shrink-0 text-mint transition-transform group-hover:translate-x-0.5" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
         </div>
       </article>
 
@@ -64,12 +85,12 @@ export default function ContentPage({ page }: { page: PageContent }) {
         />
       )}
 
-      <section className="py-16 px-[6vw] bg-charcoal-light/80 backdrop-blur-sm relative z-10">
+      <section className="py-16 px-[6vw] border-t border-white/10 bg-charcoal-light/60 backdrop-blur-sm relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-2xl md:text-3xl font-bold text-offwhite mb-4">
             The first conversation is a measurement, not a pitch
           </h2>
-          <p className="text-offwhite-dark mb-8">
+          <p className="text-offwhite-dark mb-8 max-w-xl mx-auto">
             Tell us which workflow everybody complains about. We'll tell you, honestly, whether
             there is enough in it to be worth anyone's money — including when the answer is no.
           </p>

@@ -1,9 +1,10 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import { parseInline, isInternalHref, type InlineToken } from './inline';
 import type { Section } from './types';
 
-const linkClass = 'text-mint underline underline-offset-2 hover:text-mint-light transition-colors';
+const linkClass = 'text-mint underline underline-offset-2 decoration-mint/40 hover:decoration-mint transition-colors';
 
 function renderToken(tok: InlineToken, key: number) {
   switch (tok.t) {
@@ -42,33 +43,37 @@ function SectionBlock({ section }: { section: Section }) {
   switch (section.type) {
     case 'heading':
       return section.level === 2 ? (
-        <h2 className="font-display text-2xl md:text-3xl font-bold text-offwhite mt-14 mb-4 scroll-mt-28">
+        <h2 className="font-display text-2xl md:text-3xl font-bold text-offwhite mt-16 mb-5 pt-8 border-t border-white/10 scroll-mt-28 first:mt-4 first:pt-0 first:border-0">
+          <span className="mr-2.5 inline-block h-[0.7em] w-[3px] translate-y-[1px] rounded-full bg-mint align-middle" />
           <Inline text={section.text} />
         </h2>
       ) : (
-        <h3 className="font-display text-lg md:text-xl font-bold text-offwhite mt-10 mb-3">
+        <h3 className="font-display text-lg md:text-xl font-bold text-offwhite mt-10 mb-3 scroll-mt-28">
           <Inline text={section.text} />
         </h3>
       );
 
     case 'paragraph':
       return (
-        <p className="text-offwhite-dark leading-relaxed my-4">
+        <p className="text-offwhite-dark leading-7 my-4">
           <Inline text={section.text} />
         </p>
       );
 
     case 'blockquote':
       return (
-        <blockquote className="my-6 border-l-2 border-mint pl-5 text-offwhite italic">
+        <blockquote className="my-7 rounded-r-lg border-l-2 border-mint bg-white/[0.03] py-3 pl-5 pr-4 text-lg leading-relaxed text-offwhite/95">
           <Inline text={section.text} />
         </blockquote>
       );
 
     case 'callout':
       return (
-        <div className="my-6 rounded-xl border border-mint/30 bg-mint/5 p-5 text-offwhite">
-          <Inline text={section.text} />
+        <div className="my-7 flex gap-3 rounded-xl border border-mint/30 bg-mint/[0.07] p-5 text-sm sm:text-base leading-relaxed text-offwhite">
+          <span aria-hidden className="mt-[0.4rem] h-2 w-2 shrink-0 rounded-full bg-mint" />
+          <div>
+            <Inline text={section.text.replace(/^\s*⚠️?\s*/, '')} />
+          </div>
         </div>
       );
 
@@ -81,17 +86,21 @@ function SectionBlock({ section }: { section: Section }) {
 
     case 'list':
       return section.ordered ? (
-        <ol className="my-4 ml-5 list-decimal space-y-2 text-offwhite-dark marker:text-mint">
+        <ol className="my-5 ml-5 list-decimal space-y-2.5 text-offwhite-dark leading-7 marker:font-semibold marker:text-mint">
           {section.items.map((item, i) => (
-            <li key={i} className="pl-1 leading-relaxed">
+            <li key={i} className="pl-1.5">
               <Inline text={item} />
             </li>
           ))}
         </ol>
       ) : (
-        <ul className="my-4 ml-5 list-disc space-y-2 text-offwhite-dark marker:text-mint">
+        <ul className="my-5 space-y-2.5 text-offwhite-dark leading-7">
           {section.items.map((item, i) => (
-            <li key={i} className="pl-1 leading-relaxed">
+            <li key={i} className="relative pl-6">
+              <span
+                aria-hidden
+                className="absolute left-0 top-[0.65rem] h-1.5 w-1.5 rounded-full bg-mint"
+              />
               <Inline text={item} />
             </li>
           ))}
@@ -100,22 +109,27 @@ function SectionBlock({ section }: { section: Section }) {
 
     case 'ctaRow':
       return (
-        <p className="my-6 flex flex-wrap gap-x-3 gap-y-2 text-sm font-medium">
-          {section.links.map((l, i) => (
-            <Fragment key={i}>
-              {i > 0 && <span className="text-white/30">·</span>}
-              {isInternalHref(l.href) ? (
-                <Link to={l.href} className={linkClass}>
-                  {l.label}
-                </Link>
-              ) : (
-                <a href={l.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                  {l.label}
-                </a>
-              )}
-            </Fragment>
-          ))}
-        </p>
+        <div className="my-7 flex flex-wrap gap-2.5">
+          {section.links.map((l, i) => {
+            const cls =
+              'group inline-flex items-center gap-1.5 rounded-full border border-mint/30 bg-mint/[0.06] px-3.5 py-1.5 text-sm font-medium text-mint hover:bg-mint/[0.12] hover:border-mint/50 transition-colors';
+            const arrow = (
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+            );
+            const label = l.label.replace(/\s*→\s*$/, '');
+            return isInternalHref(l.href) ? (
+              <Link key={i} to={l.href} className={cls}>
+                {label}
+                {arrow}
+              </Link>
+            ) : (
+              <a key={i} href={l.href} target="_blank" rel="noopener noreferrer" className={cls}>
+                {label}
+                {arrow}
+              </a>
+            );
+          })}
+        </div>
       );
 
     case 'table':
@@ -141,11 +155,16 @@ function SectionBlock({ section }: { section: Section }) {
             </thead>
             <tbody>
               {section.rows.map((row, ri) => (
-                <tr key={ri} className="align-top">
+                <tr
+                  key={ri}
+                  className="align-top border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors"
+                >
                   {row.map((cell, ci) => (
                     <td
                       key={ci}
-                      className="border-b border-white/5 px-3 py-2.5 sm:px-4 sm:py-3 text-offwhite-dark"
+                      className={`px-3 py-3 sm:px-4 sm:py-3.5 ${
+                        ci === 0 ? 'text-offwhite font-medium' : 'text-offwhite-dark'
+                      }`}
                     >
                       <Inline text={cell} />
                     </td>

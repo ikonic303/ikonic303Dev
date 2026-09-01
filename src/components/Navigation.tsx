@@ -17,6 +17,17 @@ export default function Navigation() {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
 
+  const isActive = (href: string) =>
+    href === '/' ? location.pathname === '/' : location.pathname.startsWith(href);
+  const deskCls = (href: string) =>
+    `text-sm font-medium transition-colors whitespace-nowrap ${
+      isActive(href) ? 'text-mint' : 'text-offwhite-dark hover:text-mint'
+    }`;
+  const mobCls = (href: string) =>
+    `text-xl font-display font-bold transition-colors ${
+      isActive(href) ? 'text-mint' : 'text-offwhite hover:text-mint'
+    }`;
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 100);
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -56,7 +67,7 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-4 xl:gap-6">
-            <Link to="/" className="text-sm font-medium text-offwhite-dark hover:text-mint transition-colors whitespace-nowrap">
+            <Link to="/" className={deskCls('/')}>
               Home
             </Link>
 
@@ -65,7 +76,7 @@ export default function Navigation() {
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
                 onMouseEnter={() => setIsServicesOpen(true)}
-                className="flex items-center gap-1 text-sm font-medium text-offwhite-dark hover:text-mint transition-colors"
+                className={`flex items-center gap-1 ${deskCls('/services')}`}
               >
                 Services
                 <ChevronDown className={`w-4 h-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
@@ -101,19 +112,19 @@ export default function Navigation() {
               )}
             </div>
 
-            <Link to="/how-we-work" className="text-sm font-medium text-offwhite-dark hover:text-mint transition-colors whitespace-nowrap">
+            <Link to="/how-we-work" className={deskCls('/how-we-work')}>
               How We Work
             </Link>
 
-            <Link to="/what-it-costs" className="text-sm font-medium text-offwhite-dark hover:text-mint transition-colors whitespace-nowrap">
+            <Link to="/what-it-costs" className={deskCls('/what-it-costs')}>
               What It Costs
             </Link>
 
-            <Link to="/who-we-work-with" className="text-sm font-medium text-offwhite-dark hover:text-mint transition-colors whitespace-nowrap">
+            <Link to="/who-we-work-with" className={deskCls('/who-we-work-with')}>
               Who We Work With
             </Link>
 
-            <Link to="/about" className="text-sm font-medium text-offwhite-dark hover:text-mint transition-colors">
+            <Link to="/about" className={deskCls('/about')}>
               About
             </Link>
 
@@ -143,14 +154,11 @@ export default function Navigation() {
             scrolls from the top (no clipped items) when it doesn't. */}
         <div className="min-h-full flex flex-col px-6 py-24">
           <div className="m-auto w-full flex flex-col items-center gap-4 text-center">
-            <Link to="/" className="text-xl font-display font-bold text-offwhite hover:text-mint transition-colors">
+            <Link to="/" className={mobCls('/')}>
               Home
             </Link>
 
-            <Link
-              to="/forward-deployed-engineering"
-              className="text-xl font-display font-bold text-offwhite hover:text-mint transition-colors"
-            >
+            <Link to="/forward-deployed-engineering" className={mobCls('/forward-deployed-engineering')}>
               Forward Deployed Engineering
             </Link>
 
@@ -158,7 +166,9 @@ export default function Navigation() {
               <p className="text-mint text-xs uppercase tracking-wide mb-1">What we build</p>
               <Link
                 to="/services"
-                className="block text-lg font-display font-bold text-mint hover:text-mint-light transition-colors py-1"
+                className={`block py-1 text-lg font-display font-bold transition-colors ${
+                  isActive('/services') ? 'text-mint-light' : 'text-mint hover:text-mint-light'
+                }`}
               >
                 All Services →
               </Link>
@@ -166,23 +176,25 @@ export default function Navigation() {
                 <Link
                   key={link.label}
                   to={link.href}
-                  className="block text-sm font-display font-semibold text-offwhite-dark hover:text-mint transition-colors py-1"
+                  className={`block py-1 text-sm font-display font-semibold transition-colors ${
+                    isActive(link.href) ? 'text-mint' : 'text-offwhite-dark hover:text-mint'
+                  }`}
                 >
                   {link.label}
                 </Link>
               ))}
             </div>
 
-            <Link to="/how-we-work" className="text-xl font-display font-bold text-offwhite hover:text-mint transition-colors">
+            <Link to="/how-we-work" className={mobCls('/how-we-work')}>
               How We Work
             </Link>
-            <Link to="/what-it-costs" className="text-xl font-display font-bold text-offwhite hover:text-mint transition-colors">
+            <Link to="/what-it-costs" className={mobCls('/what-it-costs')}>
               What It Costs
             </Link>
-            <Link to="/who-we-work-with" className="text-xl font-display font-bold text-offwhite hover:text-mint transition-colors">
+            <Link to="/who-we-work-with" className={mobCls('/who-we-work-with')}>
               Who We Work With
             </Link>
-            <Link to="/about" className="text-xl font-display font-bold text-offwhite hover:text-mint transition-colors">
+            <Link to="/about" className={mobCls('/about')}>
               About
             </Link>
             <Link to="/contact" className="btn-primary mt-2">

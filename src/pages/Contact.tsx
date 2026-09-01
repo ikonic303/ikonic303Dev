@@ -47,11 +47,11 @@ export default function Contact() {
       <section className="pt-28 sm:pt-32 pb-10 px-[6vw] relative z-10">
         <div className="max-w-4xl mx-auto">
           <Breadcrumb crumbs={contact.breadcrumb} />
-          <p className="text-micro text-mint mb-4">{contact.eyebrow}</p>
-          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-offwhite mb-6 leading-tight break-words">
+          <p className="text-micro text-mint mb-4 tracking-[0.2em]">{contact.eyebrow}</p>
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3rem] font-bold text-offwhite mb-8 leading-[1.15] break-words">
             {contact.h1}
           </h1>
-          <p className="text-base sm:text-lg text-offwhite font-medium leading-relaxed border-l-2 border-mint pl-4 max-w-2xl">
+          <p className="text-base sm:text-lg text-offwhite font-medium leading-relaxed rounded-xl border border-mint/25 bg-mint/[0.06] px-5 py-4 max-w-2xl">
             {contact.answer}
           </p>
         </div>
