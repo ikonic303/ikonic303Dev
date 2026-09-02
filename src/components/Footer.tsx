@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -69,19 +68,6 @@ export default function Footer() {
               </li>
               <li className="text-offwhite-dark">Colorado · working with clients nationwide</li>
             </ul>
-
-            <div className="mt-6 p-4 bg-charcoal-light border border-white/10 rounded-xl">
-              <p className="text-xs text-offwhite-dark mb-1">Looking for signage or window film?</p>
-              <a
-                href="https://ikonic303.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-mint text-sm font-medium hover:gap-2 transition-all"
-              >
-                Visit our sister site, ikonic303.com
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </div>
           </div>
         </div>
 
