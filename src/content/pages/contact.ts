@@ -31,6 +31,10 @@ export const contact: PageContent = {
   answer:
     "The first conversation is not a pitch. It is a short version of the measurement: which workflow, how many people touch it, how long it takes, what it costs when it goes wrong. Sometimes that conversation ends with us telling you there is not enough in it to be worth anyone's money. That is a legitimate outcome and it is free.",
   sections: [
+    {
+      type: 'paragraph',
+      text: 'We work across three lanes — [engineering](/services), [marketing](/marketing) and [security](/security). Whichever one brought you here, tell us about it below.',
+    },
     { type: 'heading', level: 2, text: 'What to bring' },
     { type: 'paragraph', text: 'Nothing prepared. Just be able to answer:' },
     {
@@ -77,5 +81,7 @@ export const contact: PageContent = {
   related: [
     { label: 'The measurement worksheet', href: '/what-it-costs' },
     { label: 'How an engagement runs', href: '/how-we-work' },
+    { label: 'Marketing retainers', href: '/marketing' },
+    { label: 'Security assessment', href: '/security' },
   ],
 };

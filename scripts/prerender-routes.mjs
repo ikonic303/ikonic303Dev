@@ -39,11 +39,13 @@ const DIST = join(__dirname, '..', 'dist');
 const ORIGIN = 'https://ikonic303.dev';
 const MIN_WORDS = 500;
 
+// No link to ikonic303.com here — Addendum B, 2026-09-09 (see DEPLOY-ADDENDUM-2026-09-09-B-
+// MARKETING-AND-SECURITY.md): "no link to ikonic303.com in copy, nav, footer, schema, sameAs
+// or canonical, both directions." This block previously named ikonic303.com as a "sister
+// site"; removed to match the Footer (see its 2026-09- commit dropping the same link).
 const CONTACT_BLOCK = `<h2>Get in touch</h2>
 <p>Email <a href="mailto:solutions@ikonic303.dev">solutions@ikonic303.dev</a> to start with the
-measurement. ikonic303 is based in Colorado and works with clients nationwide. Looking for
-signage, window graphics, or architectural window film? That is our sister site,
-<a href="https://ikonic303.com">ikonic303.com</a>.</p>`;
+measurement. ikonic303 is based in Colorado and works with clients nationwide.</p>`;
 
 // Site nav + footer, mirroring what <Navigation> and <Footer> render on every SPA page.
 // Emitted into every content route's crawler HTML so the static view carries the same

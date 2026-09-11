@@ -26,7 +26,6 @@
 
     { "source": "/services/web-design", "destination": "/services/marketing-systems", "permanent": true },
     { "source": "/services/marketing", "destination": "/services/marketing-systems", "permanent": true },
-    { "source": "/marketing", "destination": "/services/marketing-systems", "permanent": true },
     { "source": "/marketing.html", "destination": "/services/marketing-systems", "permanent": true },
     { "source": "/services/crm-automation", "destination": "/services/crm-and-sales-systems", "permanent": true },
     { "source": "/services/reputation", "destination": "/services/marketing-systems", "permanent": true },
