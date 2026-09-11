@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="mt-24 pt-12 border-t border-white/10 relative z-10">
       <div className="px-[6vw]">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="mb-4">
@@ -26,6 +26,23 @@ export default function Footer() {
                 { label: 'Internal tools & dashboards', href: '/services/internal-tools-and-dashboards' },
                 { label: 'Marketing systems', href: '/services/marketing-systems' },
                 { label: 'All services', href: '/services' },
+              ].map(({ label, href }) => (
+                <li key={label}>
+                  <Link to={href} className="text-offwhite-dark text-sm hover:text-mint transition-colors">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Marketing + Security lanes — Addendum B, 2026-09-09 */}
+          <div>
+            <h4 className="text-offwhite font-medium mb-4">Other lanes</h4>
+            <ul className="space-y-2">
+              {[
+                { label: 'Marketing retainers', href: '/marketing' },
+                { label: 'Security assessment', href: '/security' },
               ].map(({ label, href }) => (
                 <li key={label}>
                   <Link to={href} className="text-offwhite-dark text-sm hover:text-mint transition-colors">

@@ -51,6 +51,25 @@ export default defineConfig({
         '/guides/speed-to-quote',
         '/careers',
         '/blogs',
+        // Marketing depth + security lane — Addendum B, 2026-09-09.
+        '/marketing',
+        '/marketing/answer-engine-optimization',
+        '/marketing/search-visibility',
+        '/marketing/content',
+        '/marketing/lead-response',
+        '/marketing/paid-acquisition',
+        '/marketing/business-profile',
+        '/marketing/what-we-report',
+        '/security',
+        '/security/attack-surface',
+        '/security/email-spoofing',
+        '/security/website-headers',
+        '/security/how-we-test',
+        '/security/security-questionnaires',
+        '/security/exposure-report',
+        // '/exposure' is deliberately NOT listed — the free exposure tool is not yet
+        // deployed (returns the SPA 404 fallback as of this writing). Add it once that
+        // route is live; six of the seven security pages link to it already.
       ],
     }),
   ],

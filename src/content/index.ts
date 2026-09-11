@@ -34,6 +34,23 @@ import { indDistribution } from './pages/ind-distribution-and-wholesale';
 import { indFieldService } from './pages/ind-field-service';
 import { indProfessionalServices } from './pages/ind-professional-services';
 
+import { marketingHub } from './pages/mkt-hub';
+import { mktAnswerEngineOptimization } from './pages/mkt-answer-engine-optimization';
+import { mktSearchVisibility } from './pages/mkt-search-visibility';
+import { mktContent } from './pages/mkt-content';
+import { mktLeadResponse } from './pages/mkt-lead-response';
+import { mktPaidAcquisition } from './pages/mkt-paid-acquisition';
+import { mktBusinessProfile } from './pages/mkt-business-profile';
+import { mktWhatWeReport } from './pages/mkt-what-we-report';
+
+import { securityHub } from './pages/sec-hub';
+import { secAttackSurface } from './pages/sec-attack-surface';
+import { secEmailSpoofing } from './pages/sec-email-spoofing';
+import { secWebsiteHeaders } from './pages/sec-website-headers';
+import { secHowWeTest } from './pages/sec-how-we-test';
+import { secSecurityQuestionnaires } from './pages/sec-security-questionnaires';
+import { secExposureReport } from './pages/sec-exposure-report';
+
 /** Core pages + the services hub / service pages. */
 export const CORE_PAGES: PageContent[] = [
   home,
@@ -77,6 +94,27 @@ export const INDUSTRY_PAGES: PageContent[] = [
   indProfessionalServices,
 ];
 
+/** The 7 marketing depth pages (children of /marketing). Addendum B, 2026-09-09. */
+export const MARKETING_PAGES: PageContent[] = [
+  mktAnswerEngineOptimization,
+  mktSearchVisibility,
+  mktContent,
+  mktLeadResponse,
+  mktPaidAcquisition,
+  mktBusinessProfile,
+  mktWhatWeReport,
+];
+
+/** The 6 security lane pages (children of /security). Addendum B, 2026-09-09. */
+export const SECURITY_PAGES: PageContent[] = [
+  secAttackSurface,
+  secEmailSpoofing,
+  secWebsiteHeaders,
+  secHowWeTest,
+  secSecurityQuestionnaires,
+  secExposureReport,
+];
+
 /**
  * Every editorial page. Consumed by:
  *   - the route components under src/pages (via <ContentPage> or bespoke layouts)
@@ -88,6 +126,10 @@ export const PAGES: PageContent[] = [
   guidesIndex,
   ...GUIDE_PAGES,
   ...INDUSTRY_PAGES,
+  marketingHub,
+  ...MARKETING_PAGES,
+  securityHub,
+  ...SECURITY_PAGES,
 ];
 
 export const PAGE_ROUTES: string[] = PAGES.map((p) => p.slug);
@@ -114,4 +156,6 @@ export {
   about,
   contact,
   guidesIndex,
+  marketingHub,
+  securityHub,
 };

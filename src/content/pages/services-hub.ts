@@ -53,6 +53,22 @@ const serviceSchema: Record<string, unknown> = {
           url: `${ORIGIN}/services/marketing-systems`,
         },
       },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Marketing retainers',
+          url: `${ORIGIN}/marketing`,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Security assessment',
+          url: `${ORIGIN}/security`,
+        },
+      },
     ],
   },
 };
@@ -106,7 +122,18 @@ export const servicesHub: PageContent = {
       type: 'paragraph',
       text: 'Lead capture, routing, attribution and follow-up as engineering rather than as campaigns — so a lead never dies because a person was busy.',
     },
-    { type: 'heading', level: 2, text: 'The rule underneath all four' },
+    { type: 'heading', level: 2, text: 'Two more lanes, the same practice' },
+    { type: 'heading', level: 3, text: '[Marketing retainers →](/marketing)' },
+    {
+      type: 'paragraph',
+      text: 'Search and answer-engine visibility, content, business profile and listings, and paid acquisition once the handler is sound — run monthly against a baseline you can check yourself.',
+    },
+    { type: 'heading', level: 3, text: '[Security assessment →](/security)' },
+    {
+      type: 'paragraph',
+      text: 'External attack-surface mapping, findings triaged by hand, and a report with the exact fix — nothing tested without a signed scope.',
+    },
+    { type: 'heading', level: 2, text: 'The rule underneath all of it' },
     { type: 'paragraph', text: '**Your accounts. Your stack. Your credentials. Your data.**' },
     {
       type: 'paragraph',
@@ -130,5 +157,7 @@ export const servicesHub: PageContent = {
     { label: 'CRM and sales systems', href: '/services/crm-and-sales-systems' },
     { label: 'Internal tools and dashboards', href: '/services/internal-tools-and-dashboards' },
     { label: 'Marketing systems', href: '/services/marketing-systems' },
+    { label: 'Marketing retainers', href: '/marketing' },
+    { label: 'Security assessment', href: '/security' },
   ],
 };

@@ -124,6 +124,17 @@ export default function Navigation() {
               Who We Work With
             </Link>
 
+            {/* Marketing + Security — Addendum B, 2026-09-09. Primary items per the brief;
+                flagged to Jamilah/Josh as making the row crowded (9 text items + CTA) since
+                the FDE comparison pages the brief expected to relocate aren't in this nav. */}
+            <Link to="/marketing" className={deskCls('/marketing')}>
+              Marketing
+            </Link>
+
+            <Link to="/security" className={deskCls('/security')}>
+              Security
+            </Link>
+
             <Link to="/guides" className={deskCls('/guides')}>
               Guides
             </Link>
@@ -197,6 +208,12 @@ export default function Navigation() {
             </Link>
             <Link to="/who-we-work-with" className={mobCls('/who-we-work-with')}>
               Who We Work With
+            </Link>
+            <Link to="/marketing" className={mobCls('/marketing')}>
+              Marketing
+            </Link>
+            <Link to="/security" className={mobCls('/security')}>
+              Security
             </Link>
             <Link to="/guides" className={mobCls('/guides')}>
               Guides

@@ -56,6 +56,15 @@ export const home: PageContent = {
       type: 'paragraph',
       text: '**What we do not do:** strategy decks, maturity assessments, roadmaps, or pilots designed to justify the next phase. If the measurement says there is nothing worth building, we say so and stay in touch.',
     },
+    { type: 'heading', level: 2, text: 'Three lanes, one practice' },
+    {
+      type: 'list',
+      items: [
+        '**Engineering** — [AI agents, CRM and sales systems, internal tools →](/services)',
+        '**Marketing** — [search and answer-engine visibility, content, lead response →](/marketing)',
+        '**Security** — [attack-surface mapping and a scoped assessment, nothing tested without a signed scope →](/security)',
+      ],
+    },
     {
       type: 'heading',
       level: 2,
@@ -175,5 +184,7 @@ export const home: PageContent = {
     { label: 'How an engagement runs', href: '/how-we-work' },
     { label: 'What it costs', href: '/what-it-costs' },
     { label: 'Who we work with', href: '/who-we-work-with' },
+    { label: 'Marketing retainers', href: '/marketing' },
+    { label: 'Security assessment', href: '/security' },
   ],
 };

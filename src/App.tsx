@@ -23,6 +23,10 @@ const Contact = lazy(() => import('./pages/Contact'));
 const GuidesIndex = lazy(() => import('./pages/GuidesIndex'));
 const GuideRoute = lazy(() => import('./pages/GuideRoute'));
 const IndustryRoute = lazy(() => import('./pages/IndustryRoute'));
+const MarketingHub = lazy(() => import('./pages/MarketingHub'));
+const MarketingRoute = lazy(() => import('./pages/MarketingRoute'));
+const SecurityHub = lazy(() => import('./pages/SecurityHub'));
+const SecurityRoute = lazy(() => import('./pages/SecurityRoute'));
 const Careers = lazy(() => import('./pages/Careers'));
 const Blogs = lazy(() => import('./pages/Blogs'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
@@ -94,6 +98,16 @@ function App() {
             {/* Guides */}
             <Route path="/guides" element={<GuidesIndex />} />
             <Route path="/guides/:slug" element={<GuideRoute />} />
+
+            {/* Marketing — Addendum B, 2026-09-09. /marketing was a 308 to
+                /services/marketing-systems (removed from vercel.json in the same change). */}
+            <Route path="/marketing" element={<MarketingHub />} />
+            <Route path="/marketing/:slug" element={<MarketingRoute />} />
+
+            {/* Security — Addendum B, 2026-09-09. New lane; the domain had no /security
+                route before this (it 404'd to the SPA catch-all). */}
+            <Route path="/security" element={<SecurityHub />} />
+            <Route path="/security/:slug" element={<SecurityRoute />} />
 
             {/* Services */}
             <Route path="/services" element={<AllServices />} />
