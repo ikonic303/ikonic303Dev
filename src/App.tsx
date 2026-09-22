@@ -27,6 +27,7 @@ const MarketingHub = lazy(() => import('./pages/MarketingHub'));
 const MarketingRoute = lazy(() => import('./pages/MarketingRoute'));
 const SecurityHub = lazy(() => import('./pages/SecurityHub'));
 const SecurityRoute = lazy(() => import('./pages/SecurityRoute'));
+const SoftwarePage = lazy(() => import('./pages/software/SoftwarePage'));
 const Careers = lazy(() => import('./pages/Careers'));
 const Blogs = lazy(() => import('./pages/Blogs'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
@@ -108,6 +109,13 @@ function App() {
                 route before this (it 404'd to the SPA catch-all). */}
             <Route path="/security" element={<SecurityHub />} />
             <Route path="/security/:slug" element={<SecurityRoute />} />
+
+            {/* ikonic Core self-serve signup funnel, 2026-09-22. checkoutUrl is null in
+                funnel.data.json until Josh pastes the GHL SaaS Configurator link — the CTA
+                renders dead ("Checkout not connected") on purpose until then. Deliberately
+                NOT in the main nav yet; Josh decides where a priced product sits on a site
+                whose homepage says it does not publish prices. */}
+            <Route path="/software" element={<SoftwarePage />} />
 
             {/* Services */}
             <Route path="/services" element={<AllServices />} />

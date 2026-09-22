@@ -70,6 +70,10 @@ export default defineConfig({
         // '/exposure' is deliberately NOT listed — the free exposure tool is not yet
         // deployed (returns the SPA 404 fallback as of this writing). Add it once that
         // route is live; six of the seven security pages link to it already.
+        // ikonic Core self-serve funnel, 2026-09-22. Sitemap entry per the build brief;
+        // NOT in the main nav (Josh's call on placement) and the page itself carries its
+        // own staging banner + dead checkout until funnel.data.json's checkoutUrl is set.
+        '/software',
       ],
     }),
   ],
