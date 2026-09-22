@@ -80,6 +80,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "jsdom": "^29.1.1",
     "postcss": "^8.5.6",
     "sharp": "^0.34.5",
     "tailwindcss": "^3.4.19",
@@ -96,6 +97,8 @@
   },
   "overrides": {
     "path-to-regexp": "^6.3.0",
-    "undici": "^5.28.5"
+    "@vercel/node": {
+      "undici": "^5.28.5"
+    }
   }
 }
