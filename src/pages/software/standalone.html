@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>ikonic Core — the one thing here with a price | ikonic303</title>
-<meta name="description" content="A self-serve version of the systems we build on engagements. Your own account, running the day you pay for it. No call, no demo, no onboarding queue.">
+<title>ikonic Software — three packages, one brain | ikonic303</title>
+<meta name="description" content="Self-serve versions of the systems we build on engagements. Core, Managed Starter, Managed Growth — your own account, running the day you pay for it. No call, no demo, no onboarding queue.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@ h1,h2,h3{font-family:'Space Grotesk',sans-serif;line-height:1.15;letter-spacing:
 section{padding:80px 0;border-bottom:1px solid hsl(var(--border))}
 .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;
   text-transform:uppercase;color:hsl(var(--primary));margin-bottom:18px}
-h1{font-size:clamp(34px,5.2vw,58px);max-width:18ch}
+h1{font-size:clamp(34px,5.2vw,58px);max-width:20ch}
 .lede{color:hsl(var(--muted-foreground));font-size:19px;max-width:62ch;margin-top:22px}
 .rule{color:hsl(var(--muted-foreground));font-size:15px;max-width:62ch;margin-top:14px}
 h2{font-size:clamp(25px,3.2vw,34px);max-width:24ch}
@@ -48,15 +48,45 @@ li:before{content:"";position:absolute;left:0;top:9px;width:9px;height:2px;backg
 .toggle button{background:none;border:0;color:hsl(var(--muted-foreground));cursor:pointer;
   font-family:inherit;font-size:13.5px;font-weight:500;padding:8px 16px;border-radius:999px}
 .toggle button[aria-pressed="true"]{background:hsl(var(--primary));color:hsl(var(--primary-foreground))}
-.bump{display:flex;gap:14px;align-items:flex-start;background:hsl(var(--secondary));
-  border:1px solid hsl(var(--border));border-radius:var(--radius);padding:18px;cursor:pointer}
-.bump.off{opacity:.42;cursor:not-allowed}
+
+/* package picker */
+.pkgs{display:grid;gap:16px;margin-top:24px}
+@media(min-width:860px){.pkgs{grid-template-columns:repeat(3,1fr)}}
+.pkg{text-align:left;background:hsl(var(--card));border:1px solid hsl(var(--border));
+  border-radius:var(--radius);padding:20px;cursor:pointer;font-family:inherit;color:hsl(var(--foreground))}
+.pkg:hover{border-color:hsl(var(--primary)/.4)}
+.pkg.selected{border-color:hsl(var(--primary));box-shadow:0 0 0 1px hsl(var(--primary))}
+.pkg h3{font-size:17px}
+.pkg .sub{font-size:14px;margin-top:8px}
+.pkgprice{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;margin-top:16px}
+.pkgprice span{font-size:13px;font-weight:500;color:hsl(var(--muted-foreground));margin-left:4px}
+.pkgtag{margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:hsl(var(--primary))}
+
+.bump{background:hsl(var(--secondary));border:1px solid hsl(var(--border));
+  border-radius:var(--radius);padding:18px}
+.bump label{display:flex;gap:14px;align-items:flex-start;cursor:pointer}
+.bump.off label{cursor:not-allowed;opacity:.42}
 .bump input{margin-top:4px;accent-color:hsl(var(--primary));width:17px;height:17px}
 .bump b{font-size:15.5px;font-weight:600;display:block}
+.bump b i{font-style:normal;font-weight:500;color:hsl(var(--muted-foreground))}
 .bump p{color:hsl(var(--muted-foreground));font-size:14px;margin-top:3px}
 .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;
   text-transform:uppercase;color:#f4cf7a;border:1px solid #5c4410;border-radius:4px;
   padding:2px 7px;margin-top:9px;display:inline-block}
+.chips{display:flex;gap:8px;margin-top:12px;margin-left:31px}
+.chip{font-family:inherit;font-size:13.5px;font-weight:500;padding:7px 14px;border-radius:999px;
+  border:1px solid hsl(var(--border));background:transparent;color:hsl(var(--muted-foreground));cursor:pointer}
+.chip.selected{border-color:hsl(var(--primary));background:hsl(var(--primary));color:hsl(var(--primary-foreground))}
+
+.proof{list-style:none;padding-left:0}
+.proof:before{content:none}
+.proofgrid{display:grid;gap:16px;margin-top:28px}
+@media(min-width:640px){.proofgrid{grid-template-columns:1fr 1fr}}
+.proofgrid li{background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);
+  padding:20px;color:hsl(var(--muted-foreground));font-size:14.5px;padding-left:20px}
+.proofgrid li:before{content:none}
+
 .summary{position:sticky;top:24px}
 .row{display:flex;justify-content:space-between;gap:12px;font-size:15px;
   padding:11px 0;border-bottom:1px solid hsl(var(--border))}
@@ -91,38 +121,40 @@ footer a{color:hsl(var(--primary));text-decoration:none}
 
 <section>
   <div class="shell">
-    <p class="eyebrow">ikonic Core</p>
-    <h1>The one thing on this site with a price on it.</h1>
+    <p class="eyebrow">ikonic Software</p>
+    <h1>The three things on this site with a price on them.</h1>
     <p class="lede">Everything else here is an engagement — we move in, measure what one
       workflow costs you, and build against that number. This is not that. This is the
-      software underneath it, on your own account, running the day you pay for it.</p>
-    <p class="rule">No call. No demo. No onboarding queue. You sign up, it provisions, you log in.
-      If that is all you wanted, you never have to speak to us.</p>
+      software underneath it, on your own account, three ways to get it running.</p>
+    <p class="rule">No call. No demo. No onboarding queue. Pick a package, add what you need,
+      and create the account. If that is all you wanted, you never have to speak to us.</p>
   </div>
 </section>
 
 <section>
   <div class="shell">
-    <h2>Build your account</h2>
-    <p class="sub">Two choices, both reversible. Nothing here is a contract you have to get out of.</p>
+    <h2>Pick a package</h2>
+    <p class="sub">All three run on the same brain underneath. What changes is who does the setup.</p>
+    <div class="toggle" role="group" aria-label="Billing period">
+      <button id="btnMonthly" aria-pressed="true">Monthly</button>
+      <button id="btnAnnual" aria-pressed="false">Annual</button>
+    </div>
+
+    <div class="pkgs" id="packages"></div>
 
     <div class="grid cols">
       <div>
         <div class="card">
-          <h3 id="coreName">ikonic Core</h3>
+          <h3 id="coreName"></h3>
           <p class="sub" id="coreBlurb"></p>
-          <div class="toggle" role="group" aria-label="Billing period">
-            <button id="btnMonthly" aria-pressed="true">Monthly</button>
-            <button id="btnAnnual" aria-pressed="false">Annual</button>
-          </div>
           <p class="price" style="margin-top:20px"><span id="priceMain">—</span></p>
           <p class="fine" id="priceNote"></p>
           <ul id="coreList"></ul>
         </div>
 
         <h3 style="margin-top:44px;font-size:20px">Add to it</h3>
-        <p class="sub">Each of these bills to the same card. Add or drop any of them later
-          without talking to anyone.</p>
+        <p class="sub">Each of these bills to the same card, on top of whichever package you
+          picked. Add or drop any of them later without talking to anyone.</p>
         <div class="grid" id="bumps" style="margin-top:20px"></div>
       </div>
 
@@ -140,12 +172,21 @@ footer a{color:hsl(var(--primary));text-decoration:none}
 
 <section>
   <div class="shell">
+    <p class="eyebrow">Every package</p>
+    <h2 id="brainHeadline"></h2>
+    <p class="sub" id="brainBlurb"></p>
+    <ul class="proofgrid" id="brainProof"></ul>
+  </div>
+</section>
+
+<section>
+  <div class="shell">
     <h2>What happens after you pay, in order</h2>
     <p class="sub">Written down because most of this industry leaves it vague.</p>
     <table>
       <tr><th>Step</th><th>What happens</th></tr>
       <tr><td>Immediately</td><td>Your account is created and the login is emailed to you. Nobody approves it.</td></tr>
-      <tr><td>First hour</td><td>You set your business name, your number and your hours. The pipelines, forms and calendars are already there.</td></tr>
+      <tr><td>First hour</td><td>Core: you set your business name, your number and your hours. Managed: a person on our side starts the build-out.</td></tr>
       <tr><td>Any time</td><td>You change anything you like. It is your account, under your login — not a seat on ours.</td></tr>
       <tr><td>If you stop</td><td>You cancel from inside the account. You keep your data and we do not hold it hostage.</td></tr>
       <tr><td>If a card fails</td><td>We retry, and we email you. On day ten we stop and a human gets in touch. <b style="color:hsl(var(--foreground))">We do not switch your account off.</b></td></tr>
@@ -157,10 +198,15 @@ footer a{color:hsl(var(--primary));text-decoration:none}
   <div class="shell">
     <h2>Questions worth answering before you pay</h2>
     <div style="margin-top:26px">
+      <details><summary>What's actually different between the three packages?</summary>
+        <p>The software is identical — same brain, same automations. Core you set up yourself.
+        Managed Starter and Growth are set up and kept running by a person on our side; Growth
+        is scoped for higher volume. Nobody is buying a worse product on Core, just less delivery.</p></details>
       <details><summary>Is this the same thing you do on an engagement?</summary>
         <p>No, and it would be dishonest to imply it. An engagement is people — measuring your
         workflow on site, building into your existing stack, and staying through launch. This is
-        the software those systems get built on, handed to you to run yourself.</p></details>
+        the software those systems get built on, handed to you to run yourself or run with a
+        person on our side.</p></details>
       <details><summary>Why does this have a price when nothing else on the site does?</summary>
         <p>Because a product has one and an engagement does not. An engagement is priced against
         what a specific workflow costs a specific company, which is different every time. A piece
@@ -174,7 +220,8 @@ footer a{color:hsl(var(--primary));text-decoration:none}
         <p>We retry the card and email you. After ten days a person reaches out. We do not suspend,
         pause or limit an account to collect money.</p></details>
       <details><summary>Do I have to talk to anybody?</summary>
-        <p>No. That is the point of this page.</p></details>
+        <p>Not on Core. Managed Starter and Growth include a person by design — that is what
+        "managed" means.</p></details>
     </div>
   </div>
 </section>

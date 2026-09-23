@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
-"""Gate check for the /software funnel. Exit 0 = safe to hand to Jamilah.
+"""Gate check for the /software funnel (v2, three packages). Exit 0 = safe to ship.
 
 Every check here is a charter rail, not a style preference. If one fails, the
-page does not go to her and it certainly does not deploy.
+page does not go out and it certainly does not deploy.
+
+v2 note: this file's check count is NOT pinned to any number claimed elsewhere.
+It counts whatever checks actually exist below for THIS shape of the page —
+three packages, all four upsells live, the brain section. Extend it as the
+page grows; do not force the total to match a figure from a memo.
 """
 import json, pathlib, re, sys
 
@@ -43,17 +48,33 @@ check("no cross-link to .com", not re.search(r"ikonic303\.com", COPY),
       "the split rail forbids linking the two domains")
 
 # --- dead catalog : nothing vehicle, and this page sells software only --------
+# (?<![a-zA-Z-]) / (?![a-zA-Z-]) instead of \b: a plain \b treats a hyphen as a
+# boundary, so it false-positives on Tailwind utility classes like "flex-wrap".
 for word in ("wrap", "vehicle", "PPF", "ceramic", "window tint", "fleet graphic"):
     check(f"no dead-catalog word: {word}",
-          not re.search(rf"\b{re.escape(word)}\b", COPY, re.I))
+          not re.search(rf"(?<![a-zA-Z-]){re.escape(word)}(?![a-zA-Z-])", COPY, re.I))
 
-# --- dogfood gate : no claim that ikonic runs this itself ---------------------
+# --- dogfood gate : ONLY the two proven brain lines make a self-claim ---------
 for pat in (r"we use (this|it) ourselves", r"we run (this|it) ourselves",
             r"\bwe dogfood\b", r"powers our own", r"answers our (own )?leads"):
     check(f"no unproven dogfood claim /{pat}/", not re.search(pat, COPY, re.I),
-          "every AI/publishing claim currently reads UNPROVEN")
+          "every AI/publishing claim currently reads UNPROVEN except the two brain proof lines")
+# The brain's headline/blurb/proofLines are data-driven (FUNNEL.brain.* / F.brain.*),
+# not retyped into the markup — that's the whole point of one source of truth, so a
+# literal-text search across the .tsx/.html source would never find them. Check
+# instead that the data is real and that both renderers actually wire it up.
+check("brain data is non-empty",
+      bool(DATA["brain"].get("headline")) and len(DATA["brain"].get("proofLines", [])) >= 2)
+check("SoftwarePage.tsx renders the brain from data, not retyped",
+      "FUNNEL.brain.headline" in TSX and "FUNNEL.brain.proofLines" in TSX)
+check("standalone preview renders the brain from data, not retyped",
+      "F.brain.headline" in JS and "F.brain.proofLines" in JS)
+check("brain line appears on every package card",
+      COPY.lower().count("brain included") >= 1 and "brain included" in JS.lower(),
+      "one line per card, per the brief — present once in source inside the per-package "
+      "render loop in both the TSX and the standalone JS, so it renders per package at runtime")
 
-# --- truth gate : no performance or outcome numbers on the page ---------------
+# --- truth gate : no performance or outcome numbers beyond the brain's own ---
 check("no invented performance stat",
       not re.search(r"\b\d{1,3}(\.\d+)?%\s*(more|faster|increase|growth|conversion|lift)", COPY, re.I))
 check("no fake social proof",
@@ -73,6 +94,15 @@ check("dunning ladder ends at D+10, no suspend rung",
       and not any("suspend" in d["action"].lower() and "not" not in d["action"].lower()
                   for d in DATA["dunning"]))
 
+# --- package catalog shape : three, exactly, no typo'd id --------------------
+check("exactly three packages", len(DATA["packages"]) == 3,
+      f"found {len(DATA['packages'])}")
+check("package ids are the three agreed ids",
+      {p["id"] for p in DATA["packages"]} == {"core", "managed-starter", "managed-growth"})
+check("Managed Starter is the rounded-up floor, not straight 5x",
+      next(p["priceMonthly"] for p in DATA["packages"] if p["id"] == "managed-starter") == 2497,
+      "straight 5x is $2,485 — the $12 rounding up is deliberate, do not \"fix\" it back")
+
 # --- pricing : one source of truth, nothing hardcoded, nothing guessed --------
 hard_html = [m for m in re.findall(r"\$\s?\d[\d,]*", HTML)]
 hard_tsx  = [m for m in re.findall(r"\$\s?\d[\d,]*", TSX)]
@@ -83,21 +113,32 @@ check("funnel.data.js is in sync with the json",
       json.loads(GEN.split("window.FUNNEL = ", 1)[1].rsplit(";", 1)[0]) == DATA,
       "run build-data.py")
 
-unpriced_on = [u["name"] for u in DATA["upsells"]
-               if u["enabled"] and u["priceMonthly"] is None]
-check("no upsell is switched on without a price", not unpriced_on,
-      f"{unpriced_on} would render a live button with no number")
-check("human-delivered upsell is OFF until capacity is set",
-      all(not u["enabled"] for u in DATA["upsells"] if u["provisioning"] == "HUMAN"),
-      "selling Jamilah's hours self-serve while her weekly ceiling is UNSET")
-check("rebilling-dependent upsells are OFF",
-      all(not u["enabled"] for u in DATA["upsells"] if u["provisioning"] == "BLOCKED"),
-      "rebilling is frozen while agency autoSuspendEnabled = true")
+unpriced_monthly_on = [u["name"] for u in DATA["upsells"]
+                        if u["enabled"] and u.get("model") == "monthly" and u["priceMonthly"] is None]
+check("no monthly-model upsell is switched on without a price", not unpriced_monthly_on,
+      f"{unpriced_monthly_on} would render a live per-month button with no number")
+check("prepaid upsell never carries a plan price of its own",
+      all(u["priceMonthly"] is None for u in DATA["upsells"] if u.get("model") == "prepaid"),
+      "prepaid credits are the customer's own chosen top-up, never a price we set")
+check("quote-model upsell never carries a self-serve price",
+      all(u["priceMonthly"] is None for u in DATA["upsells"] if u.get("model") == "quote"),
+      "done-for-you deployment flags a reply — it must never render a chargeable number")
+check("quote upsell says so in the copy",
+      "no self-serve price" in COPY.lower() or "scoped by reply" in COPY.lower(),
+      "the page must tell the customer this ticks a flag, not a charge")
+check("usage-model upsell's own data references the real rate, not a made-up figure",
+      any("platform cost" in u["blurb"].lower() for u in DATA["upsells"] if u.get("model") == "usage"),
+      "the blurb is data-driven (not retyped into the markup) — check the source of truth itself")
 
-# --- the CTA cannot fire into nothing ----------------------------------------
-check("checkout is dead while the URL is unset",
-      DATA["checkoutUrl"] is None
-      and "Checkout not connected" in JS and "Checkout not connected" in TSX)
+# --- the CTA cannot fire into nothing, for ANY package ------------------------
+check("every package's checkout is null (none deployable yet)",
+      all(v is None for v in DATA["checkoutUrls"].values()))
+_non_null = [v for v in DATA["checkoutUrls"].values() if v is not None]
+check("no two packages share one checkout link",
+      len(_non_null) == len(set(_non_null)),
+      "a Managed buyer landing on Core's checkout is a billing incident")
+check("checkout is dead while a package's URL is unset",
+      "Checkout not connected" in JS and "Checkout not connected" in TSX)
 check("staging preview is noindex",
       'name="robots" content="noindex,nofollow"' in HTML.replace(" ", "").replace(
           'name="robots"content="noindex,nofollow"', 'name="robots" content="noindex,nofollow"')
