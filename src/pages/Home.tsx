@@ -9,6 +9,9 @@ import FaqSection from '../components/FaqSection';
 import RenderSections from '../content/RenderSections';
 import { home } from '../content/pages/home';
 
+// FDE booking calendar in GoHighLevel — bookings land in the pipeline, unlike the mailto link.
+const FDE_BOOKING_URL = 'https://links.ikonic303.dev/widget/booking/2uFmY5TsCt2kEpeBIak2';
+
 export default function Home() {
   // Section 0 is the AI-extraction blockquote — rendered in the hero, above the fold.
   const heroQuote = home.sections[0];
@@ -55,6 +58,14 @@ export default function Home() {
                 Start with the measurement
                 <ArrowRight className="w-5 h-5 shrink-0" />
               </Link>
+              <a
+                href={FDE_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline text-center"
+              >
+                Book an FDE call
+              </a>
               <Link to="/how-we-work" className="btn-outline text-center">
                 See how an engagement runs
               </Link>
@@ -102,11 +113,22 @@ export default function Home() {
                 <ArrowRight className="w-5 h-5 shrink-0" />
               </Link>
               <a
-                href="mailto:solutions@ikonic303.dev"
-                className="text-sm text-mint hover:text-mint-light break-all"
+                href={FDE_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline text-center"
               >
-                solutions@ikonic303.dev
+                Book an FDE call
               </a>
+              <p className="text-sm text-offwhite-dark">
+                Prefer email?{' '}
+                <a
+                  href="mailto:solutions@ikonic303.dev"
+                  className="text-mint hover:text-mint-light break-all"
+                >
+                  solutions@ikonic303.dev
+                </a>
+              </p>
             </div>
           </div>
         </section>

@@ -8,7 +8,7 @@ export const guidesIndex: PageContent = {
   seo: {
     title: 'Guides — Measuring, Choosing and Deploying',
     description:
-      'Twelve guides on measuring what a workflow costs, choosing what to automate first, and not getting locked into whoever builds it.',
+      'Thirteen guides on measuring what a workflow costs, choosing what to automate first, and not getting locked into whoever builds it.',
   },
   breadcrumb: crumbs({ name: 'Guides', href: slug }),
   eyebrow: 'GUIDES',
@@ -31,6 +31,7 @@ export const guidesIndex: PageContent = {
       items: [
         '**[Agency, consultant, or forward deployed engineer](/guides/agency-vs-consultant-vs-fde)** — Three genuinely different trades. All three are right for somebody.',
         '**[Twelve questions to ask before you sign](/guides/twelve-questions-before-you-sign)** — Print it, take it to the meeting. Our own answers are at the bottom.',
+        '**[How to read an automation quote](/guides/how-to-read-an-automation-quote)** — Skip the total. Read five things first, then put every quote on a three-year cost.',
         '**[Who owns the system when it is built for you](/guides/who-owns-the-system)** — Accounts, credentials, code, data, knowledge. Vendors answer confidently about one of the five.',
         '**[Build or buy an internal tool](/guides/build-vs-buy-internal-tools)** — Buy anything that is not specific to you. There is a third option most people miss.',
       ],

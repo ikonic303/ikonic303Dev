@@ -42,6 +42,7 @@ export default defineConfig({
         '/guides/you-cannot-automate-a-mess',
         '/guides/agency-vs-consultant-vs-fde',
         '/guides/twelve-questions-before-you-sign',
+        '/guides/how-to-read-an-automation-quote',
         '/guides/who-owns-the-system',
         '/guides/build-vs-buy-internal-tools',
         '/guides/what-ten-weeks-looks-like',

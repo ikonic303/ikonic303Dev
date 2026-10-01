@@ -88,6 +88,7 @@ be described as one.
 - [You cannot automate a mess](https://ikonic303.dev/guides/you-cannot-automate-a-mess)
 - [Agency, consultant, or forward deployed engineer](https://ikonic303.dev/guides/agency-vs-consultant-vs-fde)
 - [Twelve questions to ask before you sign](https://ikonic303.dev/guides/twelve-questions-before-you-sign)
+- [How to read an automation quote](https://ikonic303.dev/guides/how-to-read-an-automation-quote)
 - [Who owns the system when it is built for you](https://ikonic303.dev/guides/who-owns-the-system)
 - [Build or buy an internal tool](https://ikonic303.dev/guides/build-vs-buy-internal-tools)
 - [What ten weeks actually looks like](https://ikonic303.dev/guides/what-ten-weeks-looks-like)

@@ -21,6 +21,7 @@ import { guideWhichWorkflowFirst } from './pages/guide-which-workflow-to-automat
 import { guideYouCannotAutomateAMess } from './pages/guide-you-cannot-automate-a-mess';
 import { guideAgencyVsConsultantVsFde } from './pages/guide-agency-vs-consultant-vs-fde';
 import { guideTwelveQuestions } from './pages/guide-twelve-questions-before-you-sign';
+import { guideHowToReadAnAutomationQuote } from './pages/guide-how-to-read-an-automation-quote';
 import { guideWhoOwnsTheSystem } from './pages/guide-who-owns-the-system';
 import { guideBuildVsBuy } from './pages/guide-build-vs-buy-internal-tools';
 import { guideWhatTenWeeksLooksLike } from './pages/guide-what-ten-weeks-looks-like';
@@ -70,13 +71,14 @@ export const CORE_PAGES: PageContent[] = [
   contact,
 ];
 
-/** The 12 long-form guides, in the order the /guides index lists them. */
+/** The 13 long-form guides, in the order the /guides index lists them. */
 export const GUIDE_PAGES: PageContent[] = [
   guideCostOfManualWorkflow,
   guideWhichWorkflowFirst,
   guideYouCannotAutomateAMess,
   guideAgencyVsConsultantVsFde,
   guideTwelveQuestions,
+  guideHowToReadAnAutomationQuote,
   guideWhoOwnsTheSystem,
   guideBuildVsBuy,
   guideWhatTenWeeksLooksLike,
